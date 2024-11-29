@@ -1,1 +1,2 @@
-# CODEEG
+# CODDEG
+Neural Engineering
