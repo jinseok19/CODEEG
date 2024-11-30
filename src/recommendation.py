@@ -40,7 +40,7 @@ def recommend_combination(
             range(len(max_values_per_channel[channel])),
             key=lambda i: max_values_per_channel[channel][i],
             reverse=True,
-        )[:3]
+        )[:5]
         largest_values = [max_values_per_channel[channel][i] for i in indices_of_largest_values]
         top_values_and_indices = [
             (value, index) for value, index in zip(largest_values, indices_of_largest_values)
@@ -60,7 +60,7 @@ def recommend_combination(
         if index not in seen_indices:
             top_indices.append(index)
             seen_indices.add(index)
-        if len(top_indices) == 3:
+        if len(top_indices) == 5:
             break
 
     save_dir = Path(result_dir) / clothes_type

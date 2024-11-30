@@ -25,8 +25,10 @@ def erp_combination2(
     mode: str = "all",
     event_file: str = "",
     data_file_path: str = "",
+    num_tops: int = 5,  # 상의 개수
+    num_bottoms: int = 5,  # 하의 개수
 ) -> Optional[Tuple[str, List[str]]]:
-    if not mode=="analysis":
+    if not mode == "analysis":
         today = str(datetime.now().date())
         if not os.path.exists(f"./data/{today}"):
             os.makedirs(f"./data/{today}")
@@ -47,22 +49,24 @@ def erp_combination2(
 
         record_start_time = data_df.iloc[0, 0]
         hour = str(record_start_time).split(":")[0]
-        min = str(record_start_time).split(":")[1]
+        minute = str(record_start_time).split(":")[1]
         sec = str(record_start_time).split(":")[2].split(".")[0]
 
         data_df = data_df[channels]
-        data_file_path = f"./data/{today}/Rawdata_{hour}.{min}.{sec}.csv"
+        data_file_path = f"./data/{today}/Rawdata_{hour}.{minute}.{sec}.csv"
         data_df.to_csv(data_file_path, index=False)
 
-    if mode=="task":
+    if mode == "task":
         return event_file, data_file_path
+
+    num_types = num_tops * num_bottoms  # 총 조합 개수
 
     analyze_eeg = AnalyzeEEG(channels=channels, fs=fs)
     eeg, eeg_times, avg_evoked_list, times_list = analyze_eeg.analyze_erp(
         eeg_filename=data_file_path,
         event_filename=event_file,
         result_dir=result_dir,
-        num_types=9,  # 3x3 조합이므로 9개의 타입
+        num_types=num_types,  # 조합 개수
         lowcut=lowcut,
         highcut=highcut,
         tmin=tmin,
@@ -79,11 +83,11 @@ def erp_combination2(
         eeg_filename="eeg_raw_combination",
     )
     plot_eeg.plot_eeg()
-    
+
     # 각 조합에 대한 전극 플롯 생성
-    for i in range(9):  # 9개의 조합에 대해
-        top_num = (i // 3) + 1  # 상의 번호 (1-3)
-        bottom_num = (i % 3) + 1  # 하의 번호 (1-3)
+    for i in range(num_types):  # 상의 x 하의 조합 수
+        top_num = (i // num_bottoms) + 1  # 상의 번호 계산
+        bottom_num = (i % num_bottoms) + 1  # 하의 번호 계산
         plot_eeg.plot_electrode(
             avg_evoked_list[i],
             times_list[i],
@@ -91,13 +95,12 @@ def erp_combination2(
         )
 
     # 여기서는 조합에 대한 추천을 반환
-    # 가장 높은 반응을 보인 조합의 인덱스를 찾아 해당하는 상의/하의 번호를 반환
-    max_response_idx = max(range(len(avg_evoked_list)), 
-                         key=lambda i: max(max(channel) for channel in avg_evoked_list[i]))
-    
-    top_num = (max_response_idx // 3) + 1
-    bottom_num = (max_response_idx % 3) + 1
-    
+    max_response_idx = max(range(len(avg_evoked_list)),
+                           key=lambda i: max(max(channel) for channel in avg_evoked_list[i]))
+
+    top_num = (max_response_idx // num_bottoms) + 1
+    bottom_num = (max_response_idx % num_bottoms) + 1
+
     recommended_combination = [
         f"static/images/result/tops/T{top_num}.jpg",
         f"static/images/result/bottoms/B{bottom_num}.jpg"
@@ -213,6 +216,18 @@ if __name__ == "__main__":
         default="",
         help="Set data file path when mode is analysis",
     )
+    parser.add_argument(
+        "--num_tops",
+        type=int,
+        default=5,
+        help="Set number of tops for combination",
+    )
+    parser.add_argument(
+        "--num_bottoms",
+        type=int,
+        default=5,
+        help="Set number of bottoms for combination",
+    )
     args = parser.parse_args()
 
     erp_combination2(
@@ -230,4 +245,6 @@ if __name__ == "__main__":
         mode=args.mode,
         event_file=args.event_file,
         data_file_path=args.data_file_path,
-    ) 
+        num_tops=args.num_tops,
+        num_bottoms=args.num_bottoms,
+    )
