@@ -1,0 +1,10 @@
+ISI,RT,Response,Top_Image,Bottom_Image
+1000,1000,CR,./result/tops\T18.jpg,./result/bottoms\B28.jpg
+1000,1000,CR,./result/tops\T28.jpg,./result/bottoms\B18.jpg
+1000,1000,CR,./result/tops\T18.jpg,./result/bottoms\B10.jpg
+1000,1000,CR,./result/tops\T18.jpg,./result/bottoms\B18.jpg
+1000,1000,CR,./result/tops\T28.jpg,./result/bottoms\B28.jpg
+1000,1000,CR,./result/tops\T10.jpg,./result/bottoms\B18.jpg
+1000,1000,CR,./result/tops\T10.jpg,./result/bottoms\B10.jpg
+1000,1000,CR,./result/tops\T10.jpg,./result/bottoms\B28.jpg
+1000,1000,CR,./result/tops\T28.jpg,./result/bottoms\B10.jpg
