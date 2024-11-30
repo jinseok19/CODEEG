@@ -100,10 +100,11 @@
       <hr />
       <section class="top-outfits">
         {% for best_num in range(1, 6) %}
-          {% set images = all_images['best_' ~ best_num] %}
+          {% set current_best = loop.index %}
+          {% set images = all_images['best_' ~ current_best] %}
           {% for top_image, bottom_image, combination_image in images.top|zip(images.bottom, images.combination) %}
           <div class="outfit">
-            <h3>Best {{ best_num }} - Combination {{ loop.index }}</h3>
+            <h3>Best combination{{ current_best }}</h3>
             <div class="outfit-content">
               <img src="{{ url_for('static', filename=combination_image) }}" alt="Combination Model" />
               <div class="outfit-details">
