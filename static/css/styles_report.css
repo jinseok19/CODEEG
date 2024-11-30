@@ -1,0 +1,423 @@
+/* General styles */
+body {
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+  background-color: #fff;
+}
+
+/* Header styles */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 160px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.logo h1 {
+  font-size: 35px;
+  font-weight: bold;
+  color: #000;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Slightly increased gap for better spacing */
+  background-color: #f9f9f9;
+  padding: 8px; /* Increased padding for a more balanced look */
+  border-radius: 4px;
+  width: 100%; /* Ensure the search bar uses available space */
+  max-width: 600px; /* Set a maximum width to control the size */
+  margin-left: auto; /* Push the search bar to the right */
+}
+
+.category-select {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+.search-input {
+  padding: 8px;
+  width: 400px; /* Increased width for a larger search input */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  background-color: transparent;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+.icon-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.icon-button:hover {
+  background-color: #f0f0f0;
+}
+
+.icon-button:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+.icon-button svg {
+  width: 24px;
+  height: 24px;
+  fill: #333;
+  transition: fill 0.3s ease;
+}
+
+.icon-button:hover svg {
+  fill: #007bff;
+}
+
+/*nav */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000;
+  padding: 10px 160px;
+  color: #fff;
+  border-bottom: 1px solid #444;
+}
+
+/* 전체 레이아웃 정리 */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 4cm; /* 버튼 간 간격 */
+  margin-left: 150px;
+}
+
+/* 드롭다운 버튼 스타일 */
+.dropdown-toggle {
+  background-color: #000000; /* 파란색 배경 */
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+  background-color: rgb(77, 77, 77); /* 어두운 파란색 */
+  transform: scale(1.05); /* 크기 확대 */
+}
+
+/* 드롭다운 메뉴 스타일 */
+.dropdown-menu {
+  display: none; /* 기본 상태에서 숨김 */
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* 드롭다운 버튼에 마우스 오버 시 표시 */
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #000000; /* 밝은 회색 배경 */
+  color: #ffffff; /* 파란색 텍스트 */
+}
+
+/* 네비게이션 링크 스타일 */
+/* Navigation link styles */
+.nav-link {
+  color: #333;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Fix hover background issue */
+.nav-link:hover {
+  background-color: rgb(77, 77, 77); /* Subtle gray background on hover */
+  color: #007bff; /* Blue text color on hover */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 버튼 간격 */
+  margin-right: 150px;
+}
+
+/* CODEEG 버튼 스타일 */
+.codeeg-button {
+  background-color: #000000; /* 녹색 배경 */
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.codeeg-button:hover {
+  background-color: #000000; /* 밝은 녹색으로 변경 */
+  transform: scale(1.05); /* 크기 약간 확대 */
+}
+
+/* ♡ 버튼 스타일 */
+.wishlist-button {
+  background-color: transparent;
+  color: #ffffff; /* 빨간색 텍스트 */
+  font-size: 20px;
+  border: 1px solid #000000; /* 빨간색 테두리 */
+  border-radius: 50%;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.wishlist-button:hover {
+  background-color: #ff4d4d; /* 빨간색 배경 */
+  color: white; /* 텍스트 흰색 */
+}
+
+.cart-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 15px;
+  transition: transform 0.2s ease, color 0.2s ease; /* 효과 추가 */
+}
+.cart-icon {
+  width: 24px; /* Set desired width */
+  height: 24px; /* Set desired height */
+  object-fit: contain; /* Ensures proper scaling of the image */
+}
+
+.cart-button:hover {
+  transform: scale(1.2); /* 버튼 커지는 효과 */
+  color: #f00; /* 하트처럼 컬러 변경 */
+}
+
+hr {
+  margin-left: 20px; /* Adds 20px space on the left */
+  margin-right: 20px; /* Adds 20px space on the right */
+  border: 0; /* Optional: removes default border styles */
+  border-top: 1px solid #ccc; /* Optional: custom border style */
+}
+/* Main section styling */
+/* Main Section */
+
+main {
+  max-width: 1200px; /* 최대 너비를 늘림 */
+  margin: auto; /* 상하 좌우 여백 조정 */
+  padding: 20px; /* 내부 여백 증가 */
+}
+
+.test-section {
+  text-align: center;
+  height: auto;
+  width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 2px 4px 10px black;
+}
+
+/* Header Section */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 160px;
+  margin-right: 160px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.header-title {
+  font-size: 35px;
+  /* font-weight: bold; */
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.header-logo {
+  width: 80px;
+  height: 80px;
+}
+/* Report section */
+
+.report-c {
+  display: flex; /* 한 줄로 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  justify-content: space-between; /* 양 끝으로 배치 */
+  margin: 20px;
+  border-bottom: 1px solid #ddd; /* 하단의 선 추가 */
+  padding-bottom: 10px;
+}
+
+.report-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0; /* 제목의 여백 제거 */
+}
+
+.download-button {
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.selected-clothes h2 {
+  text-align: center;
+  /* margin-top: 30px; */
+  margin: 30px 0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.clothing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 칸 크기를 자동으로 조정 */
+  gap: 10px;
+  max-width: 1200px; /* 전체 그리드의 최대 너비 */
+  margin: 0 auto; /* 그리드 자체를 중앙으로 정렬 */
+  justify-content: center; /* 그리드 내부 아이템도 가운데 정렬 */
+}
+
+.clothing-grid img {
+  width: 100%; /* 칸 크기에 맞게 이미지 조정 */
+  height: 157.14px; /* 비율 유지 */
+  border: 1px solid #ddd; /* 선택적으로 테두리 추가 */
+  border-radius: 5px; /* 선택적으로 둥근 모서리 */
+}
+
+/* Outfit section */
+.outfit {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  position: relative; /* 상대 위치 지정 */
+}
+
+.outfit h3 {
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.outfit-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start; /* 세로 정렬 */
+}
+
+.outfit-content img {
+  width: 300px; /* 모델 이미지 최대 크기 */
+  height: auto; /* 비율 유지 */
+  border-radius: 8px;
+
+  margin-right: 40px;
+  margin-left: 30px;
+}
+
+.outfit-details {
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  gap: 20px; /* 아이템 간격 */
+}
+
+.item .image-and-text {
+  display: flex; /* 이미지와 텍스트를 가로로 배치 */
+  align-items: center; /* 텍스트를 이미지 가운데 정렬 */
+  gap: 15px; /* 이미지와 텍스트 간 간격 */
+}
+
+.image-and-text img {
+  width: 150px;
+  /* max-width: 100px; 이미지 최대 너비 제한 */
+  height: auto; /* 비율 유지 */
+  border-radius: 8px; /* 선택적으로 둥근 모서리 */
+}
+
+.clothes-type {
+  font-size: 18px;
+}
+
+.clothes-name {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.clothes-price {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.shop-button {
+  width: 200px;
+  height: 37px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #000000;
+}
+
+.button-container {
+  width: 100%;
+  text-align: right;
+}
+
+.add-to-cart {
+  margin: 20px 20px; /* 버튼을 가운데로 정렬 */
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Footer styles */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #000;
+  color: #fff;
+}

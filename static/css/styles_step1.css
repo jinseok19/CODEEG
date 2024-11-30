@@ -1,0 +1,64 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 430px; /* Full viewport height */
+    background-color: #f9f9f9; /* Background color */
+}
+
+.button-container {
+    display: flex; /* Stack buttons vertically */
+    gap: 80px; /* Space between buttons */
+}
+
+.big-button {
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center-align text and image */
+    justify-content: center; /* Center-align content */
+    padding: 20px 40px; /* Button padding */
+    font-size: 20px; /* Text font size */
+    font-weight: bold; /* Bold text */
+    color: black; /* Text color */
+    background-color: white; /* Button background color */
+    border: 1px solid black; /* Remove border */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+    text-align: center; /* Ensure text alignment is centered */
+    gap: 10px; /* Space between image and text */
+}
+
+.big-button:hover {
+    background-color: white; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.button-icon {
+    width: 300px; /* Image width */
+    height: 300px; /* Image height */
+    object-fit: contain; /* Ensure image fits within the size */
+}
+.next-step-button-container {
+    position: absolute;
+    bottom: 170px;
+    right: 20px;
+    transform: translateY(0);
+    z-index: 1;
+}
+
+.large-button {
+    padding: 16px 32px; /* 버튼 크기 확대 */
+    font-size: 18px;   /* 텍스트 크기 증가 */
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 8px; /* 약간 둥근 모서리 */
+    cursor: pointer;
+    border: 1px solid black
+}
+
+.large-button:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
