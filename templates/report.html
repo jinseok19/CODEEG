@@ -99,40 +99,43 @@
       </section>
       <hr />
       <section class="top-outfits">
-        {% for top_image, bottom_image, combination_image in top_images|zip(bottom_images, combination_images) %}
-        <div class="outfit">
-          <h3>Top {{ loop.index }}</h3>
-          <div class="outfit-content">
-            <img src="{{ url_for('static', filename=combination_image) }}" alt="Combination Model" />
-            <div class="outfit-details">
-              <div class="item">
-                <div class="image-and-text">
-                  <img src="{{ url_for('static', filename=top_image) }}" alt="Top Image" />
-                  <div>
-                    <div class="clothes-type">Top</div>
-                    <div class="clothes-name">Dynamic Top Name</div>
-                    <div class="clothes-price">Dynamic Price</div>
-                    <button class="shop-button">Shop Now</button>
+        {% for best_num in range(1, 6) %}
+          {% set images = all_images['best_' ~ best_num] %}
+          {% for top_image, bottom_image, combination_image in images.top|zip(images.bottom, images.combination) %}
+          <div class="outfit">
+            <h3>Best {{ best_num }} - Combination {{ loop.index }}</h3>
+            <div class="outfit-content">
+              <img src="{{ url_for('static', filename=combination_image) }}" alt="Combination Model" />
+              <div class="outfit-details">
+                <div class="item">
+                  <div class="image-and-text">
+                    <img src="{{ url_for('static', filename=top_image) }}" alt="Top Image" />
+                    <div>
+                      <div class="clothes-type">Top</div>
+                      <div class="clothes-name">Dynamic Top Name</div>
+                      <div class="clothes-price">Dynamic Price</div>
+                      <button class="shop-button">Shop Now</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="item">
-                <div class="image-and-text">
-                  <img src="{{ url_for('static', filename=bottom_image) }}" alt="Bottom Image" />
-                  <div>
-                    <div class="clothes-type">Bottom</div>
-                    <div class="clothes-name">Dynamic Bottom Name</div>
-                    <div class="clothes-price">Dynamic Price</div>
-                    <button class="shop-button">Shop Now</button>
+                <div class="item">
+                  <div class="image-and-text">
+                    <img src="{{ url_for('static', filename=bottom_image) }}" alt="Bottom Image" />
+                    <div>
+                      <div class="clothes-type">Bottom</div>
+                      <div class="clothes-name">Dynamic Bottom Name</div>
+                      <div class="clothes-price">Dynamic Price</div>
+                      <button class="shop-button">Shop Now</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="button-container">
+              <button class="add-to-cart">+ Add to Cart</button>
+            </div>
           </div>
-          <div class="button-container">
-            <button class="add-to-cart">+ Add to Cart</button>
-          </div>
-        </div>
+          {% endfor %}
         {% endfor %}
       </section>
     </main>

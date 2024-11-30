@@ -27,29 +27,31 @@ def step2():
 
 @app.route('/report')
 def report():
-    best_1_folder = os.path.join('static', 'images', 'result', 'combination', 'best_1')
-    top_images = []
-    bottom_images = []
-    combination_images = []
+    # Dictionary to store images for each best folder
+    all_images = {
+        f'best_{i}': {'top': [], 'bottom': [], 'combination': []}
+        for i in range(1, 6)
+    }
 
-    if os.path.exists(best_1_folder):
-        for filename in sorted(os.listdir(best_1_folder)):
-            full_path = os.path.join(best_1_folder, filename)
-            
-            if filename.startswith('top_') and filename.endswith('.jpg'):
-                relative_path = 'images/result/combination/best_1/' + filename
-                top_images.append(relative_path)
-            elif filename.startswith('bottom_') and filename.endswith('.jpg'):
-                relative_path = 'images/result/combination/best_1/' + filename
-                bottom_images.append(relative_path)
-            elif filename.startswith('combination_') and filename.endswith('.jpg'):
-                relative_path = 'images/result/combination/best_1/' + filename
-                combination_images.append(relative_path)
+    # Base folder path
+    base_folder = os.path.join('static', 'images', 'result', 'combination')
 
-    return render_template('report.html', 
-                         top_images=top_images, 
-                         bottom_images=bottom_images, 
-                         combination_images=combination_images)
+    # Process each best folder (best_1 to best_5)
+    for i in range(1, 6):
+        best_folder = os.path.join(base_folder, f'best_{i}')
+        
+        if os.path.exists(best_folder):
+            for filename in sorted(os.listdir(best_folder)):
+                relative_path = f'images/result/combination/best_{i}/{filename}'
+                
+                if filename.startswith('top_') and filename.endswith('.jpg'):
+                    all_images[f'best_{i}']['top'].append(relative_path)
+                elif filename.startswith('bottom_') and filename.endswith('.jpg'):
+                    all_images[f'best_{i}']['bottom'].append(relative_path)
+                elif filename.startswith('combination_') and filename.endswith('.jpg'):
+                    all_images[f'best_{i}']['combination'].append(relative_path)
+
+    return render_template('report.html', all_images=all_images)
 
 def run_erp_combination_async(*args, **kwargs):
     result = erp_combination(*args, **kwargs)
