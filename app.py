@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import os
 import threading
 from erp_combination import erp_combination
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'
 
 @app.route('/')
 def index():
@@ -19,18 +20,18 @@ def step2():
 
 @app.route('/report')
 def report():
-    return render_template('report.html')
-
-
+    recommended_images = session.get('recommended_images', [])
+    relative_paths = [os.path.relpath(path, 'static') for path in recommended_images]
+    return render_template('report.html', recommended_images=relative_paths)
 
 def run_erp_combination_async(*args, **kwargs):
-    threading.Thread(target=erp_combination, args=args, kwargs=kwargs, daemon=True).start()
-
-
+    result = erp_combination(*args, **kwargs)
+    if result and len(result) == 2:
+        _, recommended_images = result
+        session['recommended_images'] = recommended_images
 
 @app.route('/run_erp_combination_top', methods=['POST'])
 def run_erp_combination_top():
-    # 비동기적으로 ERP 조합 실행
     run_erp_combination_async(
         screen_width=1920,
         screen_height=1080,
@@ -54,7 +55,6 @@ def run_erp_combination_top():
 
 @app.route('/run_erp_combination_bottom', methods=['POST'])
 def run_erp_combination_bottom():
-    # 비동기적으로 ERP 조합 실행
     run_erp_combination_async(
         screen_width=1920,
         screen_height=1080,
@@ -76,10 +76,8 @@ def run_erp_combination_bottom():
     )
     return redirect(url_for('step1'))
 
-
 @app.route('/run_erp_combination', methods=['POST'])
 def run_erp_combination():
-    # 비동기적으로 ERP 조합 실행
     run_erp_combination_async(
         screen_width=1920,
         screen_height=1080,

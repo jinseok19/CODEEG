@@ -30,7 +30,7 @@ def erp_combination(
     mode: str = "all",
     event_file: str = "",
     data_file_path: str = "",
-) -> Optional[Tuple[str, str]]:
+) -> Optional[Tuple[str, List[str]]]:
     if not mode=="analysis":
         today = str(datetime.now().date())
         if not os.path.exists(f"./data/{today}"):
@@ -116,13 +116,15 @@ def erp_combination(
     else:
         raise ValueError("Invalid clothes type")
 
-    recommend_combination(
+    recommended_images = recommend_combination(
         avg_evoked_list=avg_evoked_list,
         times_list=times_list,
         channels=channels,
         image_folder=image_folder,
         clothes_type=clothes_type,
     )
+
+    return event_file, recommended_images
 
 
 if __name__ == "__main__":

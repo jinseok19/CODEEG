@@ -12,9 +12,9 @@ def recommend_combination(
     channels: List[str], 
     image_folder: str, 
     clothes_type: str,
-) -> None:
+) -> List[str]:
     
-    result_dir = 'result'
+    result_dir = 'static/images/result'
     max_values_per_channel = []
     # 각 채널에 대해
     for channel_idx in range(len(channels)):
@@ -72,7 +72,7 @@ def recommend_combination(
             image.show()
         else:
             print("")
-
+    recommended_images = []
     # 옷 종류에 따라 이미지 출력
     if clothes_type == "bottoms":
         for index in top_indices:
@@ -81,7 +81,7 @@ def recommend_combination(
             image = Image.open(image_filename)
             save_path = save_dir / f"B{index+1}.jpg"
             image.save(save_path)  # 이미지 저장
-            show_image(image)  # 이미지 표시
+            recommended_images.append(str(save_path))  # 이미지 표시
     
     elif clothes_type == "tops":
         for index in top_indices:
@@ -90,6 +90,7 @@ def recommend_combination(
             image = Image.open(image_filename)
             save_path = save_dir / f"T{index+1}.jpg"
             image.save(save_path)  # 이미지 저장
-            show_image(image)  # 이미지 표시
+            recommended_images.append(str(save_path))  # 이미지 표시
     else:
         raise ValueError("Invalid clothes type")
+    return recommended_images
