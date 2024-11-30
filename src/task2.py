@@ -130,9 +130,23 @@ def combination_display_task(
         combined_image.blit(scaled_top, (0, 0))
         combined_image.blit(scaled_bottom, (0, screen_height // 4))
 
-        combined_image_path = combination_dir / f"combination_T{top_num}_B{bottom_num}.jpg"
+        # Create a directory for each best combination
+        best_dir = combination_dir / f"best_{idx + 1}"
+        best_dir.mkdir(parents=True, exist_ok=True)
+
+        # Save combined image
+        combined_image_path = best_dir / f"combination_T{top_num}_B{bottom_num}.jpg"
         pygame.image.save(combined_image, str(combined_image_path))
+
+        # Save individual top and bottom images
+        top_image_path = best_dir / f"top_{top_num}.jpg"
+        bottom_image_path = best_dir / f"bottom_{bottom_num}.jpg"
+        pygame.image.save(top_image, str(top_image_path))
+        pygame.image.save(bottom_image, str(bottom_image_path))
+
         print(f"저장된 상위하위 조합 이미지: {combined_image_path}")
+        print(f"저장된 상의 이미지: {top_image_path}")
+        print(f"저장된 하의 이미지: {bottom_image_path}")
 
     # Pygame 종료
     pygame.quit()

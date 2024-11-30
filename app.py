@@ -8,6 +8,11 @@ from erp_combination2 import erp_combination2
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 
+# Add a custom filter for zip
+@app.template_filter('zip')
+def zip_filter(a, b, c):
+    return zip(a, b, c)
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -22,13 +27,29 @@ def step2():
 
 @app.route('/report')
 def report():
-    recommended_combinations = session.get('recommended_combinations', [])
-    tops = []
-    bottoms = []
-    for top_path, bottom_path in recommended_combinations:
-        tops.append(os.path.relpath(top_path, 'static'))
-        bottoms.append(os.path.relpath(bottom_path, 'static'))
-    return render_template('report.html', tops=tops, bottoms=bottoms)
+    best_1_folder = os.path.join('static', 'images', 'result', 'combination', 'best_1')
+    top_images = []
+    bottom_images = []
+    combination_images = []
+
+    if os.path.exists(best_1_folder):
+        for filename in sorted(os.listdir(best_1_folder)):
+            full_path = os.path.join(best_1_folder, filename)
+            
+            if filename.startswith('top_') and filename.endswith('.jpg'):
+                relative_path = 'images/result/combination/best_1/' + filename
+                top_images.append(relative_path)
+            elif filename.startswith('bottom_') and filename.endswith('.jpg'):
+                relative_path = 'images/result/combination/best_1/' + filename
+                bottom_images.append(relative_path)
+            elif filename.startswith('combination_') and filename.endswith('.jpg'):
+                relative_path = 'images/result/combination/best_1/' + filename
+                combination_images.append(relative_path)
+
+    return render_template('report.html', 
+                         top_images=top_images, 
+                         bottom_images=bottom_images, 
+                         combination_images=combination_images)
 
 def run_erp_combination_async(*args, **kwargs):
     result = erp_combination(*args, **kwargs)
