@@ -25,6 +25,10 @@ def step1():
 def step2():
     return render_template('step2.html')
 
+@app.route('/step3')
+def step3():
+    return render_template('step3.html')
+
 @app.route('/report')
 def report():
     # Dictionary to store images for each best folder
@@ -51,7 +55,24 @@ def report():
                 elif filename.startswith('combination_') and filename.endswith('.jpg'):
                     all_images[f'best_{i}']['combination'].append(relative_path)
 
-    return render_template('report.html', all_images=all_images)
+    # 선택된 옷 이미지 정보 생성
+    selected_clothes = []
+    for i in range(1, 6):
+        best_key = f'best_{i}'
+        # 상의 이미지 추가
+        for top_img in all_images[best_key]['top']:
+            selected_clothes.append({
+                'path': top_img,
+                'description': f'Top from Best {i}'
+            })
+        # 하의 이미지 추가
+        for bottom_img in all_images[best_key]['bottom']:
+            selected_clothes.append({
+                'path': bottom_img,
+                'description': f'Bottom from Best {i}'
+            })
+
+    return render_template('report.html', all_images=all_images, selected_clothes=selected_clothes)
 
 def run_erp_combination_async(*args, **kwargs):
     result = erp_combination(*args, **kwargs)
@@ -145,32 +166,21 @@ def run_erp_combination():
 
 @app.route('/run_combination_display', methods=['POST'])
 def run_combination_display():
-    try:
-        run_erp_combination2_async(
-            screen_width=1920,
-            screen_height=1080,
-            fs=256,
-            channels=['EEG_Fp1', 'EEG_Fp2'],
-            isi=1000,
-            event_save_path='./event',
-            result_dir='./plot/combination/0',
-            lowcut=1.0,
-            highcut=30.0,
-            tmin=-0.2,
-            tmax=1.0,
-            mode='all'
-        )
-        
-        if 'error' in session:
-            flash(f'오류가 발생했습니다: {session["error"]}')
-            session.pop('error', None)
-            return redirect(url_for('step2'))
-            
-        return redirect(url_for('report'))
-    except Exception as e:
-        print(f"Error during combination display task: {e}")
-        flash('테스트 중 오류가 발생했습니다.')
-        return redirect(url_for('step2'))
+    run_erp_combination2_async(
+        screen_width=1920,
+        screen_height=1080,
+        fs=256,
+        channels=['EEG_Fp1', 'EEG_Fp2'],
+        isi=1000,
+        event_save_path='./event',
+        result_dir='./plot/combination/0',
+        lowcut=1.0,
+        highcut=30.0,
+        tmin=-0.2,
+        tmax=1.0,
+        mode='all'
+    )
+    return redirect(url_for('step3'))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_step1.css') }}">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap JavaScript -->
+
+<!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <title>CODEEG Test</title>
     <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
+
+
 <body>
+
     <header>
         <div class="header-content">
             <div class="logo">
@@ -43,8 +49,7 @@
             </div>
             <a href="#" class="nav-link">HOME &#9662;</a>
             <a href="#" class="nav-link">SHOP &#9662;</a>
-            <a href="{{ url_for('report') }}" class="nav-link">REPORT &#9662;</a>
-
+            <a href="#" class="nav-link">BLOG &#9662;</a>
         </div>
         <div class="navbar-right">
             <button class="codeeg-button" onclick="location.href='{{ url_for('index') }}'">CODEEG</button>
@@ -65,46 +70,50 @@
         <hr>
         
         </nav>  
-    <main>
-        <section class="test-section">
-            <div class="content">
-                <h2 class="step-title">STEP 2</h2>
-                <p class="step-description">
-                    뇌파를 활용하여 사용자가 관심을 가지는 의류(상의/하의)를 탐색하고, 해당 옷을 사용자의 사진에 생성형 AI 기반으로 합성해 시각적으로 어울리는지 확인 가능
-                </p>
-                <div class="clothing-items">
-                    <img src="{{ url_for('static', filename='images/Sweater_white.png') }}" alt="Sweater" class="clothing-item">
-                    <img src="{{ url_for('static', filename='images/clothes_1.png') }}" alt="Hoodie" class="clothing-item">
-                    <img src="{{ url_for('static', filename='images/clothes_2.jpg') }}" alt="Hoodie2" class="clothing-item">
-                    <img src="{{ url_for('static', filename='images/clothes_3.png') }}" alt="Shirt" class="clothing-item">
-                    <img src="{{ url_for('static', filename='images/clothes_4.png') }}" alt="Shirt" class="clothing-item">
-                    <img src="{{ url_for('static', filename='images/clothes_5.png') }}" alt="Shirt" class="clothing-item">
-                    <img src="{{ url_for('static', filename='images/clothes_6.png') }}" alt="Shirt" class="clothing-item">
-                    <img src="{{ url_for('static', filename='images/clothes_7.png') }}" alt="Shirt" class="clothing-item">
-                </div>
 
-                <button class="test-button" onclick="location.href='{{ url_for('step3') }}'">TEST START !!</button>
-            </div>
-        </section>
-    </main>
-    <footer class="footer">
-        <hr>
-        <div class="footer__aside-bottom">
-            <div class="footer__copyright text-sm text-subdued" style="float: left;">
-                © 2024 CODEEG. All Rights Reserved
-            </div>
-            <div class="footer__right" style="float: right;">
-                <div class="footer__payment-icons h-stack wrap gap-2">
-                    <img src="{{ url_for('static', filename='images/visa_logo.jpg') }}" alt="Visa" width="38" height="24">
-                    <img src="{{ url_for('static', filename='images/Google_Pay_Logo.jpg') }}" alt="Google Pay" width="38" height="24">
-                    <img src="{{ url_for('static', filename='images/amazon_pay_logo.jpg') }}" alt="Amazon Pay" width="38" height="24">
-                    <img src="{{ url_for('static', filename='images/paypal_logo.jpg') }}" alt="PayPal" width="38" height="24">
+        <main>
+            <div class="button-container">
+                <form action="{{ url_for('run_combination_display') }}" method="post">
+                    <button type="submit" class="big-button">
+                        <img src="{{ url_for('static', filename='images/combination.jpg') }}" alt="Top Test" class="button-icon">
+                        COMBINATION TEST
+                    </button>
+                </form>
+                <form action="{{ url_for('run_erp_combination_bottom') }}" method="post">
+                    <button type="submit" class="big-button">
+                        <img src="{{ url_for('static', filename='images/clothes_7.png') }}" alt="Bottom Test" class="button-icon">
+                        DRESS UP
+                    </button>
+                </form>
+                <div class="next-step-button-container">
+                    <form action="{{ url_for('report') }}">
+                        <button type="submit" class="large-button">REPORT</button>
+                    </form>
                 </div>
             </div>
-            <div class = "footer_right">
-                <h6 padding-right ="">English (IN) &#8377; INR</h6>
+        </main>
+        
+       
+
+        <footer class="footer">
+            <hr>
+            <div class="footer__aside-bottom">
+                <div class="footer__copyright text-sm text-subdued" style="float: left;">
+                    © 2024 CODEEG. All Rights Reserved
+                </div>
+                <div class="footer__right" style="float: right;">
+                    <div class="footer__payment-icons h-stack wrap gap-2">
+                        <img src="{{ url_for('static', filename='images/visa_logo.jpg') }}" alt="Visa" width="38" height="24">
+                        <img src="{{ url_for('static', filename='images/Google_Pay_Logo.jpg') }}" alt="Google Pay" width="38" height="24">
+                        <img src="{{ url_for('static', filename='images/amazon_pay_logo.jpg') }}" alt="Amazon Pay" width="38" height="24">
+                        <img src="{{ url_for('static', filename='images/paypal_logo.jpg') }}" alt="PayPal" width="38" height="24">
+                    </div>
+                </div>
+                <div class = "footer_right">
+                    <h6 padding-right ="">English (IN) &#8377; INR</h6>
+                </div>
             </div>
-        </div>
-    </footer>
-</body>
-</html>
+        </footer>
+    </body>
+    </html>
+    

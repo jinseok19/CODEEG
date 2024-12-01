@@ -88,13 +88,11 @@
       <section class="selected-clothes">
         <h2>Selected Clothes</h2>
         <div class="clothing-grid">
-          <img src="{{ url_for('static', filename='images/Sweater.png') }}" alt="White Shirt" height="157.14" />
-          <img src="{{ url_for('static', filename='images/clothes_2.jpg') }}" alt="Hoodie" />
-          <img src="{{ url_for('static', filename='images/clothes_3.png') }}" alt="Sweater" />
-          <img src="{{ url_for('static', filename='images/clothes_4.png') }}" alt="Graphic Hoodie" />
-          <img src="{{ url_for('static', filename='images/clothes_5.png') }}" alt="Jeans" />
-          <img src="{{ url_for('static', filename='images/clothes_6.png') }}" alt="Black Pants" />
-          <img src="{{ url_for('static', filename='images/clothes_7.png') }}" alt="Gray Pants" />
+          {% for image in selected_clothes %}
+            <img src="{{ url_for('static', filename=image.path) }}" 
+                 alt="{{ image.description }}" 
+                 {% if image.height %}height="{{ image.height }}"{% endif %} />
+          {% endfor %}
         </div>
       </section>
       <hr />
