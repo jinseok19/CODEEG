@@ -201,7 +201,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--mode",
         type=str,
-        default="analysis",  # mode : analysis, all, task
+        default="all",  # mode : analysis, all, task
         help="Set execution mode",
     )
     parser.add_argument(

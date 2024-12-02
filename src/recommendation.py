@@ -73,15 +73,24 @@ def recommend_combination(
         else:
             print("")
     recommended_images = []
+
     # 옷 종류에 따라 이미지 출력
     if clothes_type == "bottoms":
         for index in top_indices:
             print(f"당신이 끌리는 하의 조합은 {index + 1}번 하의입니다.")
             image_filename = f"{image_folder}/B{index + 1}.jpg"
-            image = Image.open(image_filename)
+            bottom_image = Image.open(image_filename)
             save_path = save_dir / f"B{index+1}.jpg"
-            image.save(save_path)  # 이미지 저장
-            recommended_images.append(str(save_path))  # 이미지 표시
+            try:
+                # RGBA 모드를 RGB로 변환
+                if bottom_image.mode == 'RGBA':
+                    bottom_image = bottom_image.convert('RGB')
+                # 이미지 저장
+                bottom_image.save(save_path)
+                print(f"조합 이미지 저장 완료: {save_path}")
+                recommended_images.append(str(save_path))
+            except Exception as e:
+                print(f"Error: 조합 이미지를 생성하는 중 문제가 발생했습니다: {e}")
     
     elif clothes_type == "tops":
         for index in top_indices:

@@ -23,12 +23,13 @@ def combination_task(
 
     # 화면 설정
     screen = pygame.display.set_mode((screen_width, screen_height))
-
-    # 현재 시간으로 파일 이름 생성
     current_time = datetime.datetime.now()
-    timestamp = current_time.strftime("%H.%M.%S")
-    filename = os.path.join(event_save_path, f"combination_event_{timestamp}.csv")
+    hour = str(current_time).split(" ")[1].split(":")[0]
+    min = str(current_time).split(" ")[1].split(":")[1]
+    sec = str(current_time).split(" ")[1].split(":")[2]
 
+    filename = f"{event_save_path}/combination_event_{hour}.{min}.{sec}.csv"
+    
     # CSV 파일 생성 및 헤더 작성
     with open(filename, mode="w", newline="") as file:
         writer = csv.writer(file)
