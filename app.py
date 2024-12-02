@@ -4,6 +4,8 @@ import threading
 from erp_combination import erp_combination
 from src.task2 import combination_display_task
 from erp_combination2 import erp_combination2
+from PIL import Image
+import hashlib
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
@@ -31,13 +33,30 @@ def step3():
 
 @app.route('/report')
 def report():
-    # Dictionary to store images for each best folder
     all_images = {
         f'best_{i}': {'top': [], 'bottom': [], 'combination': []}
         for i in range(1, 6)
     }
 
-    # Base folder path
+    # Dictionary to store image hashes to prevent duplicates
+    image_hashes = {'top': {}, 'bottom': {}}
+    unique_images = {'top': [], 'bottom': []}
+
+    def get_image_hash(image_path):
+        try:
+            full_path = os.path.join('static', image_path)
+            with Image.open(full_path) as img:
+                # Convert image to grayscale and resize to small size for comparison
+                img = img.convert('L').resize((8, 8), Image.Resampling.LANCZOS)
+                pixels = list(img.getdata())
+                avg = sum(pixels) / len(pixels)
+                # Create binary hash
+                bits = ''.join(['1' if pixel > avg else '0' for pixel in pixels])
+                return hashlib.md5(bits.encode()).hexdigest()
+        except Exception as e:
+            print(f"Error processing image {image_path}: {e}")
+            return None
+
     base_folder = os.path.join('static', 'images', 'result', 'combination')
 
     # Process each best folder (best_1 to best_5)
@@ -48,29 +67,41 @@ def report():
             for filename in sorted(os.listdir(best_folder)):
                 relative_path = f'images/result/combination/best_{i}/{filename}'
                 
-                if filename.startswith('top_') and filename.endswith('.jpg'):
+                if filename.startswith('T') and filename.endswith('.jpg'):
                     all_images[f'best_{i}']['top'].append(relative_path)
-                elif filename.startswith('bottom_') and filename.endswith('.jpg'):
+                    # Check for duplicates using image hash
+                    img_hash = get_image_hash(relative_path)
+                    if img_hash and img_hash not in image_hashes['top']:
+                        image_hashes['top'][img_hash] = relative_path
+                        unique_images['top'].append(relative_path)
+                        
+                elif filename.startswith('B') and filename.endswith('.jpg'):
                     all_images[f'best_{i}']['bottom'].append(relative_path)
+                    # Check for duplicates using image hash
+                    img_hash = get_image_hash(relative_path)
+                    if img_hash and img_hash not in image_hashes['bottom']:
+                        image_hashes['bottom'][img_hash] = relative_path
+                        unique_images['bottom'].append(relative_path)
+                        
                 elif filename.startswith('combination_') and filename.endswith('.jpg'):
                     all_images[f'best_{i}']['combination'].append(relative_path)
 
-    # 선택된 옷 이미지 정보 생성
+    # 선택된 옷 이미지 정보 생성 (실제 중복 제거된 이미지만 포함)
     selected_clothes = []
-    for i in range(1, 6):
-        best_key = f'best_{i}'
-        # 상의 이미지 추가
-        for top_img in all_images[best_key]['top']:
-            selected_clothes.append({
-                'path': top_img,
-                'description': f'Top from Best {i}'
-            })
-        # 하의 이미지 추가
-        for bottom_img in all_images[best_key]['bottom']:
-            selected_clothes.append({
-                'path': bottom_img,
-                'description': f'Bottom from Best {i}'
-            })
+    
+    # 중복 제거된 상의 이미지 추가
+    for top_img in unique_images['top']:
+        selected_clothes.append({
+            'path': top_img,
+            'description': 'Top'
+        })
+    
+    # 중복 제거된 하의 이미지 추가
+    for bottom_img in unique_images['bottom']:
+        selected_clothes.append({
+            'path': bottom_img,
+            'description': 'Bottom'
+        })
 
     return render_template('report.html', all_images=all_images, selected_clothes=selected_clothes)
 

@@ -88,13 +88,12 @@
       <section class="selected-clothes">
         <h2>Selected Clothes</h2>
         <div class="clothing-grid">
-          {% for image in selected_clothes %}
-            <img src="{{ url_for('static', filename=image.path) }}" 
-                 alt="{{ image.description }}" 
-                 {% if image.height %}height="{{ image.height }}"{% endif %} />
+          {% for item in selected_clothes %}
+            <img src="{{ url_for('static', filename=item.path) }}" alt="{{ item.description }}" />
           {% endfor %}
         </div>
       </section>
+      
       <hr />
       <section class="top-outfits">
         {% for best_num in range(1, 6) %}
@@ -144,3 +143,7 @@
     </footer>
   </body>
 </html>
+
+
+
+

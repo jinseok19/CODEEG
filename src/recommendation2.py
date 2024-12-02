@@ -5,6 +5,11 @@ from pathlib import Path
 import shutil
 from PIL import Image
 
+def clear_directory(directory: Path):
+    if directory.exists() and directory.is_dir():
+        shutil.rmtree(directory)
+    directory.mkdir(parents=True, exist_ok=True)
+
 def recommend_combination2(
     avg_evoked_list: List[np.ndarray], 
     times_list: List[np.ndarray], 
@@ -13,6 +18,7 @@ def recommend_combination2(
     print("recommend_combination2 함수 시작")
     
     result_dir = 'static/images/result/combination'
+    clear_directory(result_dir)
     max_values_per_channel = []
 
     # 각 채널에 대해

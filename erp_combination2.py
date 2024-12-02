@@ -95,8 +95,10 @@ def erp_combination2(
         )
 
     # 여기서는 조합에 대한 추천을 반환
-    max_response_idx = max(range(len(avg_evoked_list)),
-                           key=lambda i: max(max(channel) for channel in avg_evoked_list[i]))
+    max_response_idx = max(
+        range(len(avg_evoked_list)),
+        key=lambda i: max(max(channel) for channel in avg_evoked_list[i])
+    )
 
     top_num = (max_response_idx // num_bottoms) + 1
     bottom_num = (max_response_idx % num_bottoms) + 1
