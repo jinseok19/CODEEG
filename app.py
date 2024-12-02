@@ -48,9 +48,9 @@ def report():
             for filename in sorted(os.listdir(best_folder)):
                 relative_path = f'images/result/combination/best_{i}/{filename}'
                 
-                if filename.startswith('top_') and filename.endswith('.jpg'):
+                if filename.startswith('T') and filename.endswith('.jpg'):
                     all_images[f'best_{i}']['top'].append(relative_path)
-                elif filename.startswith('bottom_') and filename.endswith('.jpg'):
+                elif filename.startswith('B') and filename.endswith('.jpg'):
                     all_images[f'best_{i}']['bottom'].append(relative_path)
                 elif filename.startswith('combination_') and filename.endswith('.jpg'):
                     all_images[f'best_{i}']['combination'].append(relative_path)
