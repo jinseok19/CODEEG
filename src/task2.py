@@ -166,12 +166,13 @@ def combination_display_task(
 
     # 화면 설정
     screen = pygame.display.set_mode((screen_width, screen_height))
-
-    # 현재 시간으로 파일 이름 생성
     current_time = datetime.datetime.now()
-    timestamp = current_time.strftime("%H.%M.%S")
-    filename = os.path.join(event_save_path, f"combination_display_event_{timestamp}.csv")
+    hour = str(current_time).split(" ")[1].split(":")[0]
+    min = str(current_time).split(" ")[1].split(":")[1]
+    sec = str(current_time).split(" ")[1].split(":")[2]
 
+    filename = f"{event_save_path}/combination_event_{hour}.{min}.{sec}.csv"
+    
     # 결과 이미지 경로 설정
     result_dir = Path('static/images/result')
     combination_dir = result_dir / 'combination'
@@ -200,11 +201,11 @@ def combination_display_task(
     combinations = [(t_idx, b_idx) for t_idx in range(len(top_images)) for b_idx in range(len(bottom_images))]
 
     # 조합 순서를 무작위로 섞기
-    random.shuffle(combinations)
+    #random.shuffle(combinations)
 
     # 모든 조합의 반응 데이터를 저장할 리스트
     response_data = []
-
+    count= 1
     # 모든 조합에 대해 실험 진행
     for top_idx, bottom_idx in combinations:
         top_image = top_images[top_idx]
@@ -267,19 +268,19 @@ def combination_display_task(
         time.sleep(isi / 1000.0)
 
         # 반응 데이터를 저장
-        response_data.append([rt, response, f"T{top_idx + 1}", f"B{bottom_idx + 1}", top_idx, bottom_idx])
-
+        response_data.append([isi,rt, response,count,f"T{top_idx + 1}", f"B{bottom_idx + 1}", top_idx, bottom_idx])
+        count+=1
     # CSV 파일에 반응 데이터 저장
     with open(filename, mode="w", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(["RT", "Response", "Top_Number", "Bottom_Number", "Top_Index", "Bottom_Index"])
+        writer = csv.writer(file) #ISI,RT,Response,Stimulus
+        writer.writerow(["ISI", "RT", "Response", "Stimulus","Top_Number", "Bottom_Number", "Top_Index", "Bottom_Index"])
         writer.writerows(response_data)
 
     # 상위 3개의 조합 선택 (반응 시간 기준)
     sorted_data = sorted(response_data, key=lambda x: x[0])[:5]
 
     # 선택된 조합 이미지를 저장
-    for idx, (rt, response, top_num, bottom_num, top_idx, bottom_idx) in enumerate(sorted_data):
+    for idx, (_,rt, response,_, top_num, bottom_num, top_idx, bottom_idx) in enumerate(sorted_data):
         top_image = top_images[top_idx]
         bottom_image = bottom_images[bottom_idx]
 
@@ -315,5 +316,6 @@ def combination_display_task(
         print(f"저장된 하의 이미지: {bottom_image_path}")
 
     # Pygame 종료
+    time.sleep(10)
     pygame.quit()
     return filename

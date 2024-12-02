@@ -4,7 +4,7 @@ from datetime import datetime
 
 import pandas as pd
 
-from src.task2 import combination_display_task
+from task2_origin import combination_display_task
 from src.analysis import AnalyzeEEG
 from src.plot import PlotEEG
 from src.recommendation2 import recommend_combination2
