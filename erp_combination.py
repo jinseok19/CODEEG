@@ -122,6 +122,7 @@ def erp_combination(
         channels=channels,
         image_folder=image_folder,
         clothes_type=clothes_type,
+        mode=mode
     )
 
     return event_file, recommended_images

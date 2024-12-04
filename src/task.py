@@ -8,13 +8,12 @@ from src.preprocess import resize_images_in_folder
 
 # Relative paths for images
 tops_init_path = './images/tops_init'
-tops_output_path = './images/tops'
+tops_resized_path = './images/tops'
 bottoms_init_path = './images/bottoms_init'
-bottoms_output_path = './images/bottoms'
-combination_path = './images/combinations'
+bottoms_resized_path = './images/bottoms'
 
 # Create directories if they don't exist
-for path in [tops_init_path, tops_output_path, bottoms_init_path, bottoms_output_path, combination_path]:
+for path in [tops_init_path, tops_resized_path, bottoms_init_path, bottoms_resized_path]:
     if not os.path.exists(path):
         os.makedirs(path)
 
@@ -31,8 +30,8 @@ def combination_task(
     clothes_type: str,
 ) -> str:
     
-    resize_images_in_folder(tops_init_path, tops_output_path)
-    resize_images_in_folder(bottoms_init_path, bottoms_output_path)
+    resize_images_in_folder(tops_init_path, tops_resized_path)
+    resize_images_in_folder(bottoms_init_path, bottoms_resized_path)
     
     # Pygame 초기화 및 종료 보장
     pygame.init()

@@ -1,9 +1,9 @@
+import os
 import threading
 from typing import List
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 import numpy as np
-import pandas as pd
 from pathlib import Path
 
 def recommend_combination(
@@ -12,6 +12,7 @@ def recommend_combination(
     channels: List[str], 
     image_folder: str, 
     clothes_type: str,
+    mode: str = "all"
 ) -> List[str]:
     
     result_dir = 'static/images/result'
@@ -47,13 +48,13 @@ def recommend_combination(
         ]
         indices_of_largest_values_per_channel.append(top_values_and_indices)
 
-    # 상위 3개 값을 기준으로 최종 인덱스 결정
+    # 내림차순 정렬
     top_values_and_indices = sum(indices_of_largest_values_per_channel, [])
     sorted_top_values_and_indices = sorted(
         top_values_and_indices, key=lambda i: i[0], reverse=True
     )
 
-    # 중복되지 않는 상위 3개 인덱스 결정
+    # 중복되지 않는 상위 5개 인덱스 결정
     seen_indices = set()
     top_indices = []
     for _, index in sorted_top_values_and_indices:
@@ -66,12 +67,12 @@ def recommend_combination(
     save_dir = Path(result_dir) / clothes_type
     save_dir.mkdir(parents=True, exist_ok=True)
 
-    def show_image(image):
-        # 메인 스레드에서만 실행
-        if threading.current_thread().name == "MainThread":
-            image.show()
-        else:
-            print("")
+    # 폴더 비우기
+    if mode != "all":
+        for file in save_dir.iterdir():
+            if file.is_file():
+                file.unlink()  # 파일 삭제
+
     recommended_images = []
 
     # 옷 종류에 따라 이미지 출력

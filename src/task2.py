@@ -11,14 +11,13 @@ import random
 from src.preprocess import resize_images_in_folder, combine_images
 
 # Relative paths for images
-tops_init_path = './images/tops_init'
-tops_output_path = './images/tops'
-bottoms_init_path = './images/bottoms_init'
-bottoms_output_path = './images/bottoms'
-combination_path = './images/combinations'
+tops_chosen_path = './static/images/result/tops'
+bottoms_chosen_path = './static/images/result/'
+combination_path = './images/chosen_combinations_init'
+combination_resized_path = './images/chosen_combinations'
 
 # Create directories if they don't exist
-for path in [tops_init_path, tops_output_path, bottoms_init_path, bottoms_output_path, combination_path]:
+for path in [tops_chosen_path, bottoms_chosen_path, combination_path, combination_resized_path]:
     if not os.path.exists(path):
         os.makedirs(path)
 
@@ -29,7 +28,8 @@ def combination_display_task(
     event_save_path: str,
 ) -> str:
     
-    combine_images(tops_output_path, bottoms_output_path, combination_path)
+    combine_images(tops_chosen_path, bottoms_chosen_path, combination_path)
+    resize_images_in_folder(combination_path, combination_resized_path)
 
     # Pygame 초기화 및 종료 보장
     pygame.init()

@@ -13,7 +13,8 @@ def clear_directory(directory: Path):
 def recommend_combination2(
     avg_evoked_list: List[np.ndarray], 
     times_list: List[np.ndarray], 
-    channels: List[str], 
+    channels: List[str],
+    mode: str = "all"
 ) -> List[str]:
     print("recommend_combination2 함수 시작")
     
@@ -25,7 +26,7 @@ def recommend_combination2(
     for channel_idx in range(len(channels)):
         print(f"채널 {channels[channel_idx]} 처리 중...")
         max_values = []
-        # 각 조합에 대해 (9개의 조합)
+        # 각 조합에 대해 (25개의 조합)
         for num_combination in range(len(times_list)):
             # 0.1초~0.5초 사이의 시간 인덱스 추출
             selected_indices = [
@@ -61,6 +62,11 @@ def recommend_combination2(
     print(f"결과 디렉토리 경로 설정: {combination_dir}")
     combination_dir.mkdir(parents=True, exist_ok=True)
     print(f"결과 디렉토리 생성됨: {combination_dir}")
+
+    if mode != "all":
+        for file in combination_dir.iterdir():
+            if file.is_file():
+                file.unlink()  # 파일 삭제
 
     recommended_combinations = []
     for idx, index in enumerate(indices_of_largest_values_per_channel[0]):
