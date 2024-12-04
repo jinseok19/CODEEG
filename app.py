@@ -7,7 +7,7 @@ import subprocess
 from PIL import Image
 from erp_combination import erp_combination
 from erp_combination2 import erp_combination2
-from src.task2 import combination_display_task
+# from src.task2 import combination_task2
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 
 app = Flask(__name__)
