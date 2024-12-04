@@ -12,7 +12,7 @@ from src.preprocess import resize_images_in_folder, combine_images
 
 # Relative paths for images
 tops_chosen_path = './static/images/result/tops'
-bottoms_chosen_path = './static/images/result/'
+bottoms_chosen_path = './static/images/result/bottoms'
 combination_path = './images/chosen_combinations_init'
 combination_resized_path = './images/chosen_combinations'
 
