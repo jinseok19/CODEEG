@@ -206,9 +206,9 @@ def resize_images_in_folder(folder_path, output_folder, target_size=()):
     # Automatically set target_size based on folder name
     folder_name = os.path.basename(folder_path)
     if folder_name == "tops_init":
-        target_size = (512, 512)
+        target_size = (400, 400)
     elif folder_name == "bottoms_init":
-        target_size = (512, 600)
+        target_size = (400, 480)
     elif not target_size:
         raise ValueError("Target size must be specified if folder name is not 'tops_init' or 'bottoms_init'.")
 
