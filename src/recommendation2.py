@@ -19,7 +19,7 @@ def recommend_combination2(
 ) -> List[str]:
     print("recommend_combination2 함수 시작")
     
-    result_dir = 'static/images/result/combination'
+    result_dir = './static/images/result/combination'
     clear_directory(result_dir)
     max_values_per_channel = []
 

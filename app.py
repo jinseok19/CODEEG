@@ -234,7 +234,7 @@ def run_combination_display():
         isi=1000,
         num_trials=1,
         num_images=25,
-        image_folder='./result/combinations',
+        image_folder='./images/chosen_combinations',
         background_path='./images/backgrounds/B0.jpg',
         event_save_path='./event',
         result_dir='./plot/combination/0',
