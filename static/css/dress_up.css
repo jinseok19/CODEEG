@@ -1,0 +1,115 @@
+.upload-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px dashed #000000;
+    border-radius: 12px;
+    text-align: center;
+    background: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-container h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.upload-container p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.upload-container .file-input {
+    display: none;
+}
+
+.upload-container .upload-icon {
+    font-size: 40px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.upload-container .drag-drop-text {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.upload-container .browse-btn {
+    display: inline-block;
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.upload-container .browse-btn:hover {
+    background-color: #777777;
+}
+
+.file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.dress-up-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dress-up-button:hover {
+    background-color: #333333;
+    transform: translateY(-2px);
+}
+
+.dress-up-button:active {
+    background-color: #555555;
+    transform: translateY(0);
+}
+
+
+.ldBar-label {
+    color: #09f;
+    font-family: 'varela round';
+    font-size: 2.5em;
+    font-weight: 900;
+}
+
+.ldBar path.mainline {
+    stroke-width: 10;
+    stroke: #09f;
+    stroke-linecap: round;
+}
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-gif {
+    width: 400px; /* Adjust size as needed */
+    height: 400px;
+}
