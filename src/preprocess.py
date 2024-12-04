@@ -1,9 +1,12 @@
 from typing import List, Tuple
+
+import os
 import copy
 
 import numpy as np
 import pandas as pd
 
+from PIL import Image
 from .iir import FilterSignal
 from sklearn.decomposition import FastICA
 
@@ -189,3 +192,76 @@ class PreprocessEEG:
             ma_signal.append(ma)
         ma_signal = np.array(ma_signal)
         return ma_signal
+
+
+def resize_images_in_folder(folder_path, output_folder, target_size=()):
+    """
+    Resize images in a folder to the target size, with additional statistics.
+
+    Args:
+        folder_path (str): Path to the folder containing images.
+        output_folder (str): Path to save resized images.
+        target_size (tuple): Target size as (width, height). Automatically set for `tops_init` and `bottoms_init`.
+    """
+    # Automatically set target_size based on folder name
+    folder_name = os.path.basename(folder_path)
+    if folder_name == "tops_init":
+        target_size = (512, 512)
+    elif folder_name == "bottoms_init":
+        target_size = (400, 600)
+    elif not target_size:
+        raise ValueError("Target size must be specified if folder name is not 'tops_init' or 'bottoms_init'.")
+
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    
+    min_width, min_height = float('inf'), float('inf')
+    total_width, total_height = 0, 0
+    image_count = 0
+    
+    # Calculate minimum width and height
+    for file_name in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, file_name)
+        if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
+            with Image.open(file_path) as img:
+                width, height = img.size
+                min_width = min(min_width, width)
+                min_height = min(min_height, height)
+
+    print(f"Minimum Width: {min_width}\nMinimum Height: {min_height}")
+    
+    # Resize images and collect statistics
+    for file_name in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, file_name)
+        if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
+            with Image.open(file_path) as img:
+                # Convert RGBA to RGB if necessary
+                if img.mode == 'RGBA':
+                    img = img.convert('RGB')
+                resized_img = img.resize(target_size)
+                output_file_path = os.path.join(output_folder, file_name)
+                # Ensure the correct extension for saving
+                if not output_file_path.lower().endswith(('.jpg', '.jpeg')):
+                    output_file_path = os.path.splitext(output_file_path)[0] + ".jpg"
+                resized_img.save(output_file_path, format='JPEG')
+                
+                # Update statistics
+                total_width += resized_img.width
+                total_height += resized_img.height
+                image_count += 1
+
+    # Calculate and print averages
+    if image_count > 0:
+        avg_width = total_width / image_count
+        avg_height = total_height / image_count
+        print(f"Average Width: {avg_width:.2f}\nAverage Height: {avg_height:.2f}")
+    else:
+        print("No images were resized.")
+    
+    # Check output directory image statistics
+    ext_counts = {}
+    for file_name in os.listdir(output_folder):
+        ext = os.path.splitext(file_name)[1].lower()
+        ext_counts[ext] = ext_counts.get(ext, 0) + 1
+    print(f"Total Images in Output Folder: {sum(ext_counts.values())}")
+    print("Image Extensions Count:", ", ".join([f"{count} images with '{ext}' extension\n" for ext, count in ext_counts.items()]))
