@@ -21,7 +21,147 @@ for path in [tops_chosen_path, bottoms_chosen_path, combination_path, combinatio
     if not os.path.exists(path):
         os.makedirs(path)
 
-def combination_display_task(
+def combination_task2(
+    screen_width: int,
+    screen_height: int,
+    isi: int,
+    event_save_path: str,
+    background_path: str,
+    image_folder: str,
+    num_trials: int,
+    num_images: int
+) -> str:
+    
+    combine_images(tops_chosen_path, bottoms_chosen_path, combination_path)
+    resize_images_in_folder(combination_path, combination_resized_path)
+
+    # Pygame 초기화 및 종료 보장
+    pygame.init()
+    atexit.register(pygame.quit)
+
+    # 화면 설정
+    screen = pygame.display.set_mode((screen_width, screen_height))
+
+    # 현재 시간으로 파일 이름 생성
+    current_time = datetime.datetime.now()
+    hour = str(current_time).split(" ")[1].split(":")[0]
+    min = str(current_time).split(" ")[1].split(":")[1]
+    sec = str(current_time).split(" ")[1].split(":")[2]
+    filename = os.path.join(event_save_path, f"combination_display_event_{hour}.{min}.{sec}.csv")
+
+# CSV 파일 생성 및 헤더 작성
+    with open(filename, mode="w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["ISI", "RT", "Response", "Stimulus"])
+
+        # 이미지 미리 로드
+        top_image = pygame.image.load(background_path)
+        task_images = []
+        for num_image in range(num_images):
+            image_path = os.path.join(
+                image_folder,
+                f"combination_{num_image}.jpg"
+            )
+            task_images.append(pygame.image.load(image_path))
+
+        # 실험 시작
+        for _ in range(num_trials):
+            for num_image, task_image in enumerate(task_images):
+                # 화면에 상단 이미지 표시
+                screen.fill((0, 0, 0))  # 배경색 초기화
+                screen.blit(
+                    top_image,
+                    (
+                        screen_width // 2 - top_image.get_width() // 2,
+                        screen_height // 2 - top_image.get_height() // 2,
+                    ),
+                )
+                pygame.display.flip()
+                time.sleep(isi / 1000.0)  # ISI 대기
+
+                # 반응 시간 측정 시작
+                start_time = pygame.time.get_ticks()
+
+                # 화면에 작업 이미지 표시
+                screen.fill((0, 0, 0))
+                screen.blit(
+                    task_image,
+                    (
+                        screen_width // 2 - task_image.get_width() // 2,
+                        screen_height // 2 - task_image.get_height() // 2,
+                    ),
+                )
+                pygame.display.flip()
+
+                # 반응 기록
+                response = "CR"
+                running = True
+                while running:
+                    for event in pygame.event.get():
+                        if event.type == pygame.KEYDOWN:
+                            if event.key == pygame.K_RETURN:
+                                response = "HIT"
+                                running = False
+                        elif event.type == pygame.QUIT:
+                            pygame.quit()
+                            exit()
+
+                    # 반응 시간을 제한 (예: 1초)
+                    if pygame.time.get_ticks() - start_time > 1000:
+                        running = False
+
+                end_time = pygame.time.get_ticks()
+                rt = end_time - start_time if response == "HIT" else 1000
+
+                # 결과를 CSV에 기록
+                writer.writerow([isi, rt, response, num_image + 1])
+
+    # 실험 종료 대기 및 Pygame 종료
+    time.sleep(10)
+    pygame.quit()
+    return filename
+'''
+    # 선택된 조합 이미지를 저장
+    for idx, (rt, response, top_num, bottom_num, top_idx, bottom_idx) in enumerate(sorted_data):
+        top_image = top_images[top_idx]
+        bottom_image = bottom_images[bottom_idx]
+
+        # 상의 및 하의 원본 경로
+        top_path = top_image_paths[top_idx]
+        bottom_path = bottom_image_paths[bottom_idx]
+
+        # 조합된 이미지 생성
+        combined_image = pygame.Surface((screen_width // 2, screen_height // 2))
+        scaled_top = pygame.transform.scale(top_image, (screen_width // 2, screen_height // 4))
+        scaled_bottom = pygame.transform.scale(bottom_image, (screen_width // 2, screen_height // 4))
+        combined_image.blit(scaled_top, (0, 0))
+        combined_image.blit(scaled_bottom, (0, screen_height // 4))
+
+        # Create a directory for each best combination
+        best_dir = combination_dir / f"best_{idx + 1}"
+        best_dir.mkdir(parents=True, exist_ok=True)
+
+        # Save combined image
+        combined_image_path = best_dir / f"combination_{top_num}_{bottom_num}.jpg"
+        pygame.image.save(combined_image, str(combined_image_path))
+
+        # Copy individual top and bottom images
+        top_image_path = best_dir / f"{top_num}.jpg"
+        pygame.image.save(top_image, str(top_image_path))
+        bottom_image_path = best_dir / f"{bottom_num}.jpg"
+        pygame.image.save(bottom_image, str(bottom_image_path))
+
+        print(f"저장된 상하의 조합 이미지: {combined_image_path}")
+        print(f"저장된 상의 이미지: {top_image_path}")
+        print(f"저장된 하의 이미지: {bottom_image_path}")
+
+    # Pygame 종료
+    pygame.quit()
+    return filename
+'''
+
+'''
+def combination_task2(
     screen_width: int,
     screen_height: int,
     isi: int,
@@ -83,7 +223,7 @@ def combination_display_task(
         bottom_image = bottom_images[bottom_idx]
 
         # 화면 초기화
-        screen.fill((255, 255, 255))  # 흰색 배경
+        screen.fill((0, 0, 0))  # 흰색 배경
 
         # 이미지 크기 조정 (화면의 1/4 크기로)
         scaled_top = pygame.transform.scale(
@@ -187,3 +327,4 @@ def combination_display_task(
     # Pygame 종료
     pygame.quit()
     return filename
+'''

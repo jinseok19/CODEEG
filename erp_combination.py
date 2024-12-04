@@ -270,7 +270,7 @@ if __name__ == "__main__":
         fs=args.fs,
         channels=args.channels,
         isi=args.isi,
-        top_image_path=f"{args.image_path}/tops/T{args.tops_order}.jpg",
+        background_path=f"{args.image_path}/backgrounds/B0.jpg",
         image_folder=f"{args.image_path}/{args.clothes_type}",
         clothes_type=f"{args.clothes_type}",
         num_trials=args.num_trials,

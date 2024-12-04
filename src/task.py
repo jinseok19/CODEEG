@@ -22,7 +22,7 @@ def combination_task(
     screen_width: int,
     screen_height: int,
     isi: int,
-    top_image_path: str,
+    background_path: str,
     image_folder: str,
     num_trials: int,
     num_images: int,
@@ -54,8 +54,9 @@ def combination_task(
         writer = csv.writer(file)
         writer.writerow(["ISI", "RT", "Response", "Stimulus"])
 
-        # 이미지 미리 로드
-        top_image = pygame.image.load(top_image_path)
+
+        top_image = pygame.image.load(background_path)
+
         task_images = []
         for num_image in range(num_images):
             image_path = os.path.join(
