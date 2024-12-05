@@ -44,9 +44,15 @@ CODEEG/
 ├── erp_combination2.py         # Improved clothing combination analysis
 └── README.md                   # Project documentation
 ```
-### 
+### Project Process
+
+![image](https://github.com/user-attachments/assets/5396f46e-4f08-458b-a27d-1595b3fa6402)
+
+
+
 
 ---
+
 ### IDM-VTOM
 Non-Commercial use only!
 This is the current best-in-class virtual try-on model, created by the Korea Advanced Institute of Science & Technology (KAIST). It’s capable of virtual try-on “in the wild” which has notoriously been difficult for generative models to tackle, until now!
@@ -60,12 +66,7 @@ This is an official implementation of paper ‘Improving Diffusion Models for Au
 
 ---
 
-### Project Process
 
-![image](https://github.com/user-attachments/assets/5396f46e-4f08-458b-a27d-1595b3fa6402)
-
-
----
 ### dress_up.py
 
 ![image](https://github.com/user-attachments/assets/68c09e79-6f46-4348-98e1-fa61cafd65b5)
