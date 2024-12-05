@@ -52,7 +52,11 @@ CODEEG/
 ### IDM-VTOM
 
 
+---
+
 ### ERP_COMBINATION
+
+![image](https://github.com/user-attachments/assets/6eb26b1a-9819-41d5-acff-37f237ec7607)
 
 This script processes EEG data to analyze and visualize ERP responses, recommending clothing combinations based on the analysis. It supports command-line arguments for flexible configuration and execution.
 
