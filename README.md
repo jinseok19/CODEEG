@@ -89,3 +89,13 @@ This code provides functionality to visualize and save EEG data, plotting variou
 The recommend_combination function analyzes EEG data to recommend clothing combinations by identifying the top evoked responses within a specified time window and saves the corresponding images. It supports both "tops" and "bottoms" clothing types, ensuring the recommended images are stored in a designated directory.
 
 --- 
+
+
+### preprocessing.py
+
+![image](https://github.com/user-attachments/assets/44edb9f4-2690-4a2b-b4a4-c53bba2dcbe7)
+
+PreprocessEEG class processes EEG data through methods for reading, filtering, normalizing, and extracting epochs, while resize_images_in_folder and combine_images functions handle image resizing and combination tasks.
+
+---
+
