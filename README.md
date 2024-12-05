@@ -44,9 +44,7 @@ CODEEG/
 ├── erp_combination2.py         # Improved clothing combination analysis
 └── README.md                   # Project documentation
 ```
-### Project Process
 
-![image](https://github.com/user-attachments/assets/5396f46e-4f08-458b-a27d-1595b3fa6402)
 
 
 ### IDM-VTOM
@@ -58,8 +56,13 @@ This is an official implementation of paper ‘Improving Diffusion Models for Au
 
 ![image](https://github.com/user-attachments/assets/49c32793-3ed3-46fb-bb45-16f772af79c9)
 
-![image](https://github.com/user-attachments/assets/b91fd43e-5711-422b-b449-5d4ca7d06161)
+![teaser2](https://github.com/user-attachments/assets/80695dc8-fc54-4e90-a4e5-ff3b2533563b)
 
+---
+
+### Project Process
+
+![image](https://github.com/user-attachments/assets/5396f46e-4f08-458b-a27d-1595b3fa6402)
 
 
 ---
