@@ -16,7 +16,9 @@ To start the application, execute:
 ```bash
 python app.py
 ```
+This format uses Markdown to clearly separate sections and provides code blocks for easy copying.
 
+---
 ### Project Structure
 
 ```
