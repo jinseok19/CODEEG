@@ -1,0 +1,181 @@
+id,best_num,type,name,price,color,image_path,combination_path
+1,1,top,Nordic Pattern Hood Zip-up,89000,Navy/White,static/images/result/combination/best_1/T1.jpg,images/result/combination/best_1/bottom_output.jpg
+2,1,top,Character Print Sweatshirt,59000,Black,images/result/combination/best_1/T2.jpg,images/result/combination/best_1/bottom_output.jpg
+3,1,top,Stripe Crop Knit,69000,Brown/Beige,images/result/combination/best_1/T3.jpg,images/result/combination/best_1/bottom_output.jpg
+4,1,top,Basic Oxford Shirt,49000,Royal Blue,images/result/combination/best_1/T4.jpg,images/result/combination/best_1/bottom_output.jpg
+5,1,top,Mahagrid Logo Sweatshirt,69000,Light Gray,images/result/combination/best_1/T5.jpg,images/result/combination/best_1/bottom_output.jpg
+6,1,top,Minimal Basic Sweatshirt,55000,Gray,images/result/combination/best_1/T6.jpg,images/result/combination/best_1/bottom_output.jpg
+7,1,top,Floral Pattern Shirt,59000,White/Brown,images/result/combination/best_1/T7.jpg,images/result/combination/best_1/bottom_output.jpg
+8,1,top,Short Sleeve Shirt,45000,Light Green,images/result/combination/best_1/T8.jpg,images/result/combination/best_1/bottom_output.jpg
+9,1,top,Half-Zip Fleece,75000,Navy,images/result/combination/best_1/T9.jpg,images/result/combination/best_1/bottom_output.jpg
+10,1,top,Button-Down Shirt,55000,Khaki,images/result/combination/best_1/T10.jpg,images/result/combination/best_1/bottom_output.jpg
+11,1,top,Graphic Sweatshirt,60000,Cream,images/result/combination/best_1/T11.jpg,images/result/combination/best_1/bottom_output.jpg
+12,1,top,Plaid Jacket,85000,Yellow/Red,images/result/combination/best_1/T12.jpg,images/result/combination/best_1/bottom_output.jpg
+13,1,top,Checkered Shirt,50000,Blue/Green,images/result/combination/best_1/T13.jpg,images/result/combination/best_1/bottom_output.jpg
+14,1,top,Plaid Shirt,52000,Green/Black,images/result/combination/best_1/T14.jpg,images/result/combination/best_1/bottom_output.jpg
+15,1,top,Polo Sweater,70000,Brown,images/result/combination/best_1/T15.jpg,images/result/combination/best_1/bottom_output.jpg
+16,1,top,Raglan T-Shirt,40000,White/Black,images/result/combination/best_1/T16.jpg,images/result/combination/best_1/bottom_output.jpg
+17,1,top,Striped Long Sleeve,65000,Black/Pink,images/result/combination/best_1/T17.jpg,images/result/combination/best_1/bottom_output.jpg
+18,1,top,Denim Shirt,60000,Light Blue,images/result/combination/best_1/T18.jpg,images/result/combination/best_1/bottom_output.jpg
+19,1,top,Cropped Shirt,48000,Lavender,images/result/combination/best_1/T19.jpg,images/result/combination/best_1/bottom_output.jpg
+20,1,top,Striped Sweater,72000,Black/Gray,images/result/combination/best_1/T20.jpg,images/result/combination/best_1/bottom_output.jpg
+21,1,top,V-Neck Sweater,68000,Red,images/result/combination/best_1/T21.jpg,images/result/combination/best_1/bottom_output.jpg
+22,1,top,Patterned Sweater,74000,Gray/Multicolor,images/result/combination/best_1/T22.jpg,images/result/combination/best_1/bottom_output.jpg
+23,1,top,Argyle Polo,71000,Gray/Blue,images/result/combination/best_1/T23.jpg,images/result/combination/best_1/bottom_output.jpg
+24,1,top,Hooded Sweater,73000,Light Gray,images/result/combination/best_1/T24.jpg,images/result/combination/best_1/bottom_output.jpg
+25,1,top,Striped Knit,76000,Green/Brown,images/result/combination/best_1/T25.jpg,images/result/combination/best_1/bottom_output.jpg
+26,1,top,Turtleneck Sweater,69000,Orange,images/result/combination/best_1/T26.jpg,images/result/combination/best_1/bottom_output.jpg
+27,1,top,Zip-Up Sweater,75000,Black,images/result/combination/best_1/T27.jpg,images/result/combination/best_1/bottom_output.jpg
+28,1,top,Collared Sweatshirt,70000,Gray/Black,images/result/combination/best_1/T28.jpg,images/result/combination/best_1/bottom_output.jpg
+29,1,top,Corduroy Shirt,62000,Dark Green,images/result/combination/best_1/T29.jpg,images/result/combination/best_1/bottom_output.jpg
+30,1,top,Striped Tee,45000,White/Navy,images/result/combination/best_1/T30.jpg,images/result/combination/best_1/bottom_output.jpg
+31,1,bottom,Graphic Sweatpants,55000,Black,images/result/combination/best_1/B1.jpg,images/result/combination/best_1/top_output.jpg
+32,1,bottom,Knit Joggers,62000,Beige,images/result/combination/best_1/B2.jpg,images/result/combination/best_1/top_output.jpg
+33,1,bottom,Washed Jeans,68000,Light Blue,images/result/combination/best_1/B3.jpg,images/result/combination/best_1/top_output.jpg
+34,1,bottom,Cuffed Denim Pants,70000,Blue,images/result/combination/best_1/B4.jpg,images/result/combination/best_1/top_output.jpg
+35,1,bottom,Wide-Leg Trousers,65000,Orange,images/result/combination/best_1/B5.jpg,images/result/combination/best_1/top_output.jpg
+36,1,bottom,Flared Pants,72000,Black,images/result/combination/best_1/B6.jpg,images/result/combination/best_1/top_output.jpg
+37,1,bottom,Drawstring Joggers,59000,Black,images/result/combination/best_1/B7.jpg,images/result/combination/best_1/top_output.jpg
+38,1,bottom,Ribbed Lounge Pants,60000,Cream,images/result/combination/best_1/B8.jpg,images/result/combination/best_1/top_output.jpg
+39,1,bottom,High-Waisted Trousers,75000,Gray,images/result/combination/best_1/B9.jpg,images/result/combination/best_1/top_output.jpg
+40,1,bottom,Wide-Leg Jeans,73000,Dark Gray,images/result/combination/best_1/B10.jpg,images/result/combination/best_1/top_output.jpg
+41,1,bottom,Printed Sweatpants,58000,Black,images/result/combination/best_1/B11.jpg,images/result/combination/best_1/top_output.jpg
+42,1,bottom,Pleated Trousers,72000,Beige,images/result/combination/best_1/B12.jpg,images/result/combination/best_1/top_output.jpg
+43,1,bottom,Utility Pants,68000,Khaki,images/result/combination/best_1/B13.jpg,images/result/combination/best_1/top_output.jpg
+44,1,bottom,Wide-Leg Sweatpants,59000,Pink,images/result/combination/best_1/B14.jpg,images/result/combination/best_1/top_output.jpg
+45,1,bottom,Quilted Pants,65000,Orange/Black,images/result/combination/best_1/B15.jpg,images/result/combination/best_1/top_output.jpg
+46,1,bottom,Tailored Trousers,70000,Charcoal,images/result/combination/best_1/B16.jpg,images/result/combination/best_1/top_output.jpg
+47,1,bottom,Cuffed Jeans,75000,Dark Blue,images/result/combination/best_1/B17.jpg,images/result/combination/best_1/top_output.jpg
+48,1,bottom,Cargo Jeans,67000,Off-White,images/result/combination/best_1/B18.jpg,images/result/combination/best_1/top_output.jpg
+49,1,bottom,Pink Jeans,68000,Pink,images/result/combination/best_1/B19.jpg,images/result/combination/best_1/top_output.jpg
+50,1,bottom,Cargo Denim Pants,72000,Dark Blue,images/result/combination/best_1/B20.jpg,images/result/combination/best_1/top_output.jpg
+51,1,bottom,Classic Blue Jeans,65000,Blue,images/result/combination/best_1/B21.jpg,images/result/combination/best_1/top_output.jpg
+52,1,bottom,Red Denim Trousers,70000,Red,images/result/combination/best_1/B22.jpg,images/result/combination/best_1/top_output.jpg
+53,1,bottom,Gray Joggers,60000,Gray,images/result/combination/best_1/B23.jpg,images/result/combination/best_1/top_output.jpg
+54,1,bottom,Corduroy Trousers,72000,Lavender,images/result/combination/best_1/B24.jpg,images/result/combination/best_1/top_output.jpg
+55,1,bottom,Training Pants,50000,Gray,images/result/combination/best_1/B25.jpg,images/result/combination/best_1/top_output.jpg
+56,1,bottom,Training Pants,48000,Black,images/result/combination/best_1/B26.jpg,images/result/combination/best_1/top_output.jpg
+57,1,bottom,Cargo Pants,65000,Burgundy,images/result/combination/best_1/B27.jpg,images/result/combination/best_1/top_output.jpg
+58,1,bottom,Light Blue Cargo Pants,68000,Light Blue,images/result/combination/best_1/B28.jpg,images/result/combination/best_1/top_output.jpg
+59,1,bottom,Wide-Leg Trousers,70000,Charcoal,images/result/combination/best_1/B29.jpg,images/result/combination/best_1/top_output.jpg
+60,1,bottom,Olive-green Jeans,45000,Olive-green,images/result/combination/best_1/B30.jpg,images/result/combination/best_1/top_output.jpg
+61,2,top,Nordic Pattern Hood Zip-up,89000,Navy/White,images/result/combination/best_2/T1.jpg,images/result/combination/best_2/bottom_output.jpg
+62,2,top,Character Print Sweatshirt,59000,Black,images/result/combination/best_2/T2.jpg,images/result/combination/best_2/bottom_output.jpg
+63,2,top,Stripe Crop Knit,69000,Brown/Beige,images/result/combination/best_2/T3.jpg,images/result/combination/best_2/bottom_output.jpg
+64,2,top,Basic Oxford Shirt,49000,Royal Blue,images/result/combination/best_2/T4.jpg,images/result/combination/best_2/bottom_output.jpg
+65,2,top,Mahagrid Logo Sweatshirt,69000,Light Gray,images/result/combination/best_2/T5.jpg,images/result/combination/best_2/bottom_output.jpg
+66,2,top,Minimal Basic Sweatshirt,55000,Gray,images/result/combination/best_2/T6.jpg,images/result/combination/best_2/bottom_output.jpg
+67,2,top,Floral Pattern Shirt,59000,White/Brown,images/result/combination/best_2/T7.jpg,images/result/combination/best_2/bottom_output.jpg
+68,2,top,Short Sleeve Shirt,45000,Light Green,images/result/combination/best_2/T8.jpg,images/result/combination/best_2/bottom_output.jpg
+69,2,top,Half-Zip Fleece,75000,Navy,images/result/combination/best_2/T9.jpg,images/result/combination/best_2/bottom_output.jpg
+70,2,top,Button-Down Shirt,55000,Khaki,images/result/combination/best_2/T10.jpg,images/result/combination/best_2/bottom_output.jpg
+71,2,top,Graphic Sweatshirt,60000,Cream,images/result/combination/best_2/T11.jpg,images/result/combination/best_2/bottom_output.jpg
+72,2,top,Plaid Jacket,85000,Yellow/Red,images/result/combination/best_2/T12.jpg,images/result/combination/best_2/bottom_output.jpg
+73,2,top,Checkered Shirt,50000,Blue/Green,images/result/combination/best_2/T13.jpg,images/result/combination/best_2/bottom_output.jpg
+74,2,top,Plaid Shirt,52000,Green/Black,images/result/combination/best_2/T14.jpg,images/result/combination/best_2/bottom_output.jpg
+75,2,top,Polo Sweater,70000,Brown,images/result/combination/best_2/T15.jpg,images/result/combination/best_2/bottom_output.jpg
+76,2,top,Raglan T-Shirt,40000,White/Black,images/result/combination/best_2/T16.jpg,images/result/combination/best_2/bottom_output.jpg
+77,2,top,Striped Long Sleeve,65000,Black/Pink,images/result/combination/best_2/T17.jpg,images/result/combination/best_2/bottom_output.jpg
+78,2,top,Denim Shirt,60000,Light Blue,images/result/combination/best_2/T18.jpg,images/result/combination/best_2/bottom_output.jpg
+79,2,top,Cropped Shirt,48000,Lavender,images/result/combination/best_2/T19.jpg,images/result/combination/best_2/bottom_output.jpg
+80,2,top,Striped Sweater,72000,Black/Gray,images/result/combination/best_2/T20.jpg,images/result/combination/best_2/bottom_output.jpg
+81,2,top,V-Neck Sweater,68000,Red,images/result/combination/best_2/T21.jpg,images/result/combination/best_2/bottom_output.jpg
+82,2,top,Patterned Sweater,74000,Gray/Multicolor,images/result/combination/best_2/T22.jpg,images/result/combination/best_2/bottom_output.jpg
+83,2,top,Argyle Polo,71000,Gray/Blue,images/result/combination/best_2/T23.jpg,images/result/combination/best_2/bottom_output.jpg
+84,2,top,Hooded Sweater,73000,Light Gray,images/result/combination/best_2/T24.jpg,images/result/combination/best_2/bottom_output.jpg
+85,2,top,Striped Knit,76000,Green/Brown,images/result/combination/best_2/T25.jpg,images/result/combination/best_2/bottom_output.jpg
+86,2,top,Turtleneck Sweater,69000,Orange,images/result/combination/best_2/T26.jpg,images/result/combination/best_2/bottom_output.jpg
+87,2,top,Zip-Up Sweater,75000,Black,images/result/combination/best_2/T27.jpg,images/result/combination/best_2/bottom_output.jpg
+88,2,top,Collared Sweatshirt,70000,Gray/Black,images/result/combination/best_2/T28.jpg,images/result/combination/best_2/bottom_output.jpg
+89,2,top,Corduroy Shirt,62000,Dark Green,images/result/combination/best_2/T29.jpg,images/result/combination/best_2/bottom_output.jpg
+90,2,top,Striped Tee,45000,White/Navy,images/result/combination/best_2/T30.jpg,images/result/combination/best_2/bottom_output.jpg
+91,2,bottom,Graphic Sweatpants,55000,Black,images/result/combination/best_2/B1.jpg,images/result/combination/best_2/top_output.jpg
+92,2,bottom,Knit Joggers,62000,Beige,images/result/combination/best_2/B2.jpg,images/result/combination/best_2/top_output.jpg
+93,2,bottom,Washed Jeans,68000,Light Blue,images/result/combination/best_2/B3.jpg,images/result/combination/best_2/top_output.jpg
+94,2,bottom,Cuffed Denim Pants,70000,Blue,images/result/combination/best_2/B4.jpg,images/result/combination/best_2/top_output.jpg
+95,2,bottom,Wide-Leg Trousers,65000,Orange,images/result/combination/best_2/B5.jpg,images/result/combination/best_2/top_output.jpg
+96,2,bottom,Flared Pants,72000,Black,images/result/combination/best_2/B6.jpg,images/result/combination/best_2/top_output.jpg
+97,2,bottom,Drawstring Joggers,59000,Black,images/result/combination/best_2/B7.jpg,images/result/combination/best_2/top_output.jpg
+98,2,bottom,Ribbed Lounge Pants,60000,Cream,images/result/combination/best_2/B8.jpg,images/result/combination/best_2/top_output.jpg
+99,2,bottom,High-Waisted Trousers,75000,Gray,images/result/combination/best_2/B9.jpg,images/result/combination/best_2/top_output.jpg
+100,2,bottom,Wide-Leg Jeans,73000,Dark Gray,images/result/combination/best_2/B10.jpg,images/result/combination/best_2/top_output.jpg
+101,2,bottom,Printed Sweatpants,58000,Black,images/result/combination/best_2/B11.jpg,images/result/combination/best_2/top_output.jpg
+102,2,bottom,Pleated Trousers,72000,Beige,images/result/combination/best_2/B12.jpg,images/result/combination/best_2/top_output.jpg
+103,2,bottom,Utility Pants,68000,Khaki,images/result/combination/best_2/B13.jpg,images/result/combination/best_2/top_output.jpg
+104,2,bottom,Wide-Leg Sweatpants,59000,Pink,images/result/combination/best_2/B14.jpg,images/result/combination/best_2/top_output.jpg
+105,2,bottom,Quilted Pants,65000,Orange/Black,images/result/combination/best_2/B15.jpg,images/result/combination/best_2/top_output.jpg
+106,2,bottom,Tailored Trousers,70000,Charcoal,images/result/combination/best_2/B16.jpg,images/result/combination/best_2/top_output.jpg
+107,2,bottom,Cuffed Jeans,75000,Dark Blue,images/result/combination/best_2/B17.jpg,images/result/combination/best_2/top_output.jpg
+108,2,bottom,Cargo Jeans,67000,Off-White,images/result/combination/best_2/B18.jpg,images/result/combination/best_2/top_output.jpg
+109,2,bottom,Pink Jeans,68000,Pink,images/result/combination/best_2/B19.jpg,images/result/combination/best_2/top_output.jpg
+110,2,bottom,Cargo Denim Pants,72000,Dark Blue,images/result/combination/best_2/B20.jpg,images/result/combination/best_2/top_output.jpg
+111,2,bottom,Classic Blue Jeans,65000,Blue,images/result/combination/best_2/B21.jpg,images/result/combination/best_2/top_output.jpg
+112,2,bottom,Red Denim Trousers,70000,Red,images/result/combination/best_2/B22.jpg,images/result/combination/best_2/top_output.jpg
+113,2,bottom,Gray Joggers,60000,Gray,images/result/combination/best_2/B23.jpg,images/result/combination/best_2/top_output.jpg
+114,2,bottom,Corduroy Trousers,72000,Lavender,images/result/combination/best_2/B24.jpg,images/result/combination/best_2/top_output.jpg
+115,2,bottom,Training Pants,50000,Gray,images/result/combination/best_2/B25.jpg,images/result/combination/best_2/top_output.jpg
+116,2,bottom,Training Pants,48000,Black,images/result/combination/best_2/B26.jpg,images/result/combination/best_2/top_output.jpg
+117,2,bottom,Cargo Pants,65000,Burgundy,images/result/combination/best_2/B27.jpg,images/result/combination/best_2/top_output.jpg
+118,2,bottom,Light Blue Cargo Pants,68000,Light Blue,images/result/combination/best_2/B28.jpg,images/result/combination/best_2/top_output.jpg
+119,2,bottom,Wide-Leg Trousers,70000,Charcoal,images/result/combination/best_2/B29.jpg,images/result/combination/best_2/top_output.jpg
+120,2,bottom,Olive-green Jeans,45000,Olive-green,images/result/combination/best_2/B30.jpg,images/result/combination/best_2/top_output.jpg
+121,3,top,Nordic Pattern Hood Zip-up,89000,Navy/White,images/result/combination/best_3/T1.jpg,images/result/combination/best_3/bottom_output.jpg
+122,3,top,Character Print Sweatshirt,59000,Black,images/result/combination/best_3/T2.jpg,images/result/combination/best_3/bottom_output.jpg
+123,3,top,Stripe Crop Knit,69000,Brown/Beige,images/result/combination/best_3/T3.jpg,images/result/combination/best_3/bottom_output.jpg
+124,3,top,Basic Oxford Shirt,49000,Royal Blue,images/result/combination/best_3/T4.jpg,images/result/combination/best_3/bottom_output.jpg
+125,3,top,Mahagrid Logo Sweatshirt,69000,Light Gray,images/result/combination/best_3/T5.jpg,images/result/combination/best_3/bottom_output.jpg
+126,3,top,Minimal Basic Sweatshirt,55000,Gray,images/result/combination/best_3/T6.jpg,images/result/combination/best_3/bottom_output.jpg
+127,3,top,Floral Pattern Shirt,59000,White/Brown,images/result/combination/best_3/T7.jpg,images/result/combination/best_3/bottom_output.jpg
+128,3,top,Short Sleeve Shirt,45000,Light Green,images/result/combination/best_3/T8.jpg,images/result/combination/best_3/bottom_output.jpg
+129,3,top,Half-Zip Fleece,75000,Navy,images/result/combination/best_3/T9.jpg,images/result/combination/best_3/bottom_output.jpg
+130,3,top,Button-Down Shirt,55000,Khaki,images/result/combination/best_3/T10.jpg,images/result/combination/best_3/bottom_output.jpg
+131,3,top,Graphic Sweatshirt,60000,Cream,images/result/combination/best_3/T11.jpg,images/result/combination/best_3/bottom_output.jpg
+132,3,top,Plaid Jacket,85000,Yellow/Red,images/result/combination/best_3/T12.jpg,images/result/combination/best_3/bottom_output.jpg
+133,3,top,Checkered Shirt,50000,Blue/Green,images/result/combination/best_3/T13.jpg,images/result/combination/best_3/bottom_output.jpg
+134,3,top,Plaid Shirt,52000,Green/Black,images/result/combination/best_3/T14.jpg,images/result/combination/best_3/bottom_output.jpg
+135,3,top,Polo Sweater,70000,Brown,images/result/combination/best_3/T15.jpg,images/result/combination/best_3/bottom_output.jpg
+136,3,top,Raglan T-Shirt,40000,White/Black,images/result/combination/best_3/T16.jpg,images/result/combination/best_3/bottom_output.jpg
+137,3,top,Striped Long Sleeve,65000,Black/Pink,images/result/combination/best_3/T17.jpg,images/result/combination/best_3/bottom_output.jpg
+138,3,top,Denim Shirt,60000,Light Blue,images/result/combination/best_3/T18.jpg,images/result/combination/best_3/bottom_output.jpg
+139,3,top,Cropped Shirt,48000,Lavender,images/result/combination/best_3/T19.jpg,images/result/combination/best_3/bottom_output.jpg
+140,3,top,Striped Sweater,72000,Black/Gray,images/result/combination/best_3/T20.jpg,images/result/combination/best_3/bottom_output.jpg
+141,3,top,V-Neck Sweater,68000,Red,images/result/combination/best_3/T21.jpg,images/result/combination/best_3/bottom_output.jpg
+142,3,top,Patterned Sweater,74000,Gray/Multicolor,images/result/combination/best_3/T22.jpg,images/result/combination/best_3/bottom_output.jpg
+143,3,top,Argyle Polo,71000,Gray/Blue,images/result/combination/best_3/T23.jpg,images/result/combination/best_3/bottom_output.jpg
+144,3,top,Hooded Sweater,73000,Light Gray,images/result/combination/best_3/T24.jpg,images/result/combination/best_3/bottom_output.jpg
+145,3,top,Striped Knit,76000,Green/Brown,images/result/combination/best_3/T25.jpg,images/result/combination/best_3/bottom_output.jpg
+146,3,top,Turtleneck Sweater,69000,Orange,images/result/combination/best_3/T26.jpg,images/result/combination/best_3/bottom_output.jpg
+147,3,top,Zip-Up Sweater,75000,Black,images/result/combination/best_3/T27.jpg,images/result/combination/best_3/bottom_output.jpg
+148,3,top,Collared Sweatshirt,70000,Gray/Black,images/result/combination/best_3/T28.jpg,images/result/combination/best_3/bottom_output.jpg
+149,3,top,Corduroy Shirt,62000,Dark Green,images/result/combination/best_3/T29.jpg,images/result/combination/best_3/bottom_output.jpg
+150,3,top,Striped Tee,45000,White/Navy,images/result/combination/best_3/T30.jpg,images/result/combination/best_3/bottom_output.jpg
+151,3,bottom,Graphic Sweatpants,55000,Black,images/result/combination/best_3/B1.jpg,images/result/combination/best_3/top_output.jpg 
+152,3,bottom,Knit Joggers,62000,Beige,images/result/combination/best_3/B2.jpg,images/result/combination/best_3/top_output.jpg 
+153,3,bottom,Washed Jeans,68000,Light Blue,images/result/combination/best_3/B3.jpg,images/result/combination/best_3/top_output.jpg 
+154,3,bottom,Cuffed Denim Pants,70000,Blue,images/result/combination/best_3/B4.jpg,images/result/combination/best_3/top_output.jpg 
+155,3,bottom,Wide-Leg Trousers,65000,Orange,images/result/combination/best_3/B5.jpg,images/result/combination/best_3/top_output.jpg 
+156,3,bottom,Flared Pants,72000,Black,images/result/combination/best_3/B6.jpg,images/result/combination/best_3/top_output.jpg 
+157,3,bottom,Drawstring Joggers,59000,Black,images/result/combination/best_3/B7.jpg,images/result/combination/best_3/top_output.jpg 
+158,3,bottom,Ribbed Lounge Pants,60000,Cream,images/result/combination/best_3/B8.jpg,images/result/combination/best_3/top_output.jpg 
+159,3,bottom,High-Waisted Trousers,75000,Gray,images/result/combination/best_3/B9.jpg,images/result/combination/best_3/top_output.jpg 
+160,3,bottom,Wide-Leg Jeans,73000,Dark Gray,images/result/combination/best_3/B10.jpg,images/result/combination/best_3/top_output.jpg 
+161,3,bottom,Printed Sweatpants,58000,Black,images/result/combination/best_3/B11.jpg,images/result/combination/best_3/top_output.jpg 
+162,3,bottom,Pleated Trousers,72000,Beige,images/result/combination/best_3/B12.jpg,images/result/combination/best_3/top_output.jpg 
+163,3,bottom,Utility Pants,68000,Khaki,images/result/combination/best_3/B13.jpg,images/result/combination/best_3/top_output.jpg 
+164,3,bottom,Wide-Leg Sweatpants,59000,Pink,images/result/combination/best_3/B14.jpg,images/result/combination/best_3/top_output.jpg 
+165,3,bottom,Quilted Pants,65000,Orange/Black,images/result/combination/best_3/B15.jpg,images/result/combination/best_3/top_output.jpg 
+166,3,bottom,Tailored Trousers,70000,Charcoal,images/result/combination/best_3/B16.jpg,images/result/combination/best_3/top_output.jpg 
+167,3,bottom,Cuffed Jeans,75000,Dark Blue,images/result/combination/best_3/B17.jpg,images/result/combination/best_3/top_output.jpg 
+168,3,bottom,Cargo Jeans,67000,Off-White,images/result/combination/best_3/B18.jpg,images/result/combination/best_3/top_output.jpg 
+169,3,bottom,Pink Jeans,68000,Pink,images/result/combination/best_3/B19.jpg,images/result/combination/best_3/top_output.jpg 
+170,3,bottom,Cargo Denim Pants,72000,Dark Blue,images/result/combination/best_3/B20.jpg,images/result/combination/best_3/top_output.jpg 
+171,3,bottom,Classic Blue Jeans,65000,Blue,images/result/combination/best_3/B21.jpg,images/result/combination/best_3/top_output.jpg 
+172,3,bottom,Red Denim Trousers,70000,Red,images/result/combination/best_3/B22.jpg,images/result/combination/best_3/top_output.jpg 
+173,3,bottom,Gray Joggers,60000,Gray,images/result/combination/best_3/B23.jpg,images/result/combination/best_3/top_output.jpg 
+174,3,bottom,Corduroy Trousers,72000,Lavender,images/result/combination/best_3/B24.jpg,images/result/combination/best_3/top_output.jpg 
+175,3,bottom,Training Pants,50000,Gray,images/result/combination/best_3/B25.jpg,images/result/combination/best_3/top_output.jpg 
+176,3,bottom,Training Pants,48000,Black,images/result/combination/best_3/B26.jpg,images/result/combination/best_3/top_output.jpg 
+177,3,bottom,Cargo Pants,65000,Burgundy,images/result/combination/best_3/B27.jpg,images/result/combination/best_3/top_output.jpg 
+178,3,bottom,Light Blue Cargo Pants,68000,Light Blue,images/result/combination/best_3/B28.jpg,images/result/combination/best_3/top_output.jpg 
+179,3,bottom,Wide-Leg Trousers,70000,Charcoal,images/result/combination/best_3/B29.jpg,images/result/combination/best_3/top_output.jpg 
+180,3,bottom,Olive-green Jeans,45000,Olive-green,images/result/combination/best_3/B30.jpg,images/result/combination/best_3/top_output.jpg 

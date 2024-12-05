@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_report.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_report.css') }}" />
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <!-- Bootstrap CSS -->
     <link
@@ -16,6 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
       rel="stylesheet" />
     <title>CODEEG Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
   </head>
 
@@ -47,96 +48,222 @@
 
     <nav class="navbar">
       <div class="navbar-left">
-          <div class="dropdown">
-              <button class="dropdown-toggle">☰ BROWSE CATEGORIES</button>
-              <div class="dropdown-menu">
-                  <a href="#">Category 1</a>
-                  <a href="#">Category 2</a>
-                  <a href="#">Category 3</a>
-              </div>
+        <div class="dropdown">
+          <button class="dropdown-toggle">☰ BROWSE CATEGORIES</button>
+          <div class="dropdown-menu">
+            <a href="#">Category 1</a>
+            <a href="#">Category 2</a>
+            <a href="#">Category 3</a>
           </div>
-          <a href="#" class="nav-link">HOME &#9662;</a>
-          <a href="#" class="nav-link">SHOP &#9662;</a>
-          <a href="{{ url_for('report') }}" class="nav-link">REPORT &#9662;</a>
-
+        </div>
+        <a href="#" class="nav-link">HOME &#9662;</a>
+        <a href="#" class="nav-link">SHOP &#9662;</a>
+        <a href="{{ url_for('report') }}" class="nav-link">REPORT &#9662;</a>
       </div>
       <div class="navbar-right">
-          <button class="codeeg-button" onclick="location.href='{{ url_for('index') }}'">CODEEG</button>
-          <button class="wishlist-button">♡</button>
-          <button class="cart-button">
-              <img src="{{ url_for('static', filename='images/cart.png') }}" alt="Cart Icon" class="cart-icon">
-          </button>
-          
+        <button class="codeeg-button" onclick="location.href='{{ url_for('start_page') }}'">
+          CODEEG
+        </button>
+        <button class="wishlist-button">♡</button>
+        <button class="cart-button">
+          <img
+            src="{{ url_for('static', filename='images/cart.png') }}"
+            alt="Cart Icon"
+            class="cart-icon" />
+        </button>
       </div>
-  </nav>
+    </nav>
 
-  <nav>
+    <nav>
       <div class="header-container">
-          <div class="header-title">CODEEG TEST</div>
-          <img src="{{ url_for('static', filename='images/CODEEG_logo.png') }}" alt="Logo" class="header-logo">
-          
+        <div class="header-title">CODEEG TEST</div>
+        <img
+          src="{{ url_for('static', filename='images/CODEEG_logo.png') }}"
+          alt="Logo"
+          class="header-logo" />
       </div>
-      <hr>
-      
-      </nav>  
+      <hr />
+    </nav>
     <main>
       <div class="report-c">
         <h1 class="report-title">Report</h1>
-        <button class="download-button">Download</button>
+        <button class="download-button" onclick="generatePDF()">Download</button>
       </div>
       <!-- <hr /> -->
       <section class="selected-clothes">
         <h2>Selected Clothes</h2>
-        <div class="clothing-grid">
-          {% for image in selected_clothes %}
-            <img src="{{ url_for('static', filename=image.path) }}" 
-                 alt="{{ image.description }}" 
-                 {% if image.height %}height="{{ image.height }}"{% endif %} />
-          {% endfor %}
+        <div class="clothing-grid" style="display: flex; flex-direction: column; gap: 40px">
+          <!-- Top Images -->
+          <div
+            class="image-group"
+            style="display: flex; flex-direction: row; justify-content: center; gap: 20px">
+            {% for image in top_images %}
+            <img
+              src="{{ url_for('static', filename='images/result/tops/' + image) }}"
+              alt="Top Clothing"
+              style="width: 150px; height: auto" />
+            {% endfor %}
+          </div>
+          <!-- Bottom Images -->
+          <div
+            class="image-group"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              gap: 20px;
+              margin-bottom: 15px;
+            ">
+            {% for image in bottom_images %}
+            <img
+              src="{{ url_for('static', filename='images/result/bottoms/' + image) }}"
+              alt="Bottom Clothing"
+              style="width: 150px; height: auto" />
+            {% endfor %}
+          </div>
         </div>
       </section>
-      
+
       <hr />
       <section class="top-outfits">
-        {% for best_num in range(1, 6) %}
-          {% set current_best = loop.index %}
-          {% set images = all_images['best_' ~ current_best] %}
-          {% for top_image, bottom_image, combination_image in images.top|zip(images.bottom, images.combination) %}
-          <div class="outfit">
-            <h3>Best combination{{ current_best }}</h3>
-            <div class="outfit-content">
-              <img src="{{ url_for('static', filename=combination_image) }}" alt="Combination Model" />
-              <div class="outfit-details">
-                <div class="item">
-                  <div class="image-and-text">
-                    <img src="{{ url_for('static', filename=top_image) }}" alt="Top Image" />
-                    <div>
-                      <div class="clothes-type">Top</div>
-                      <div class="clothes-name">Dynamic Top Name</div>
-                      <div class="clothes-price">Dynamic Price</div>
-                      <button class="shop-button">Shop Now</button>
-                    </div>
+        {% set images_1 = all_images['best_1'] %} {% if images_1.tops and images_1.bottoms %} {% set
+        top_1 = images_1.tops[0] %} {% set bottom_1 = images_1.bottoms[0] %}
+        <div class="outfit">
+          <h3>Best combination 1</h3>
+          <div class="outfit-content">
+            <img
+              src="{{ url_for('static', filename='images/result/combination/best_1/bottom_output.jpg') }}"
+              alt="Combination Model" />
+            <div class="outfit-details">
+              {# Top Item #}
+              <div class="item">
+                <div class="image-and-text">
+                  <img
+                    src="{{ url_for('static', filename='images/result/combination/best_1/' + top_image_1) }}"
+                    alt="Top Image" />
+                  <div>
+                    <div class="clothes-type">Top</div>
+                    <div class="clothes-name">{{ top_1.name }}</div>
+                    <div class="clothes-color">Color: {{ top_1.color }}</div>
+                    <div class="clothes-price">{{ top_1.price }}원</div>
+                    <button class="shop-button">Shop Now</button>
                   </div>
                 </div>
-                <div class="item">
-                  <div class="image-and-text">
-                    <img src="{{ url_for('static', filename=bottom_image) }}" alt="Bottom Image" />
-                    <div>
-                      <div class="clothes-type">Bottom</div>
-                      <div class="clothes-name">Dynamic Bottom Name</div>
-                      <div class="clothes-price">Dynamic Price</div>
-                      <button class="shop-button">Shop Now</button>
-                    </div>
+              </div>
+              {# Bottom Item #}
+              <div class="item">
+                <div class="image-and-text">
+                  <img
+                    src="{{ url_for('static', filename='images/result/combination/best_1/' + bottom_image_1) }}"
+                    alt="Bottom Image" />
+                  <div>
+                    <div class="clothes-type">Bottom</div>
+                    <div class="clothes-name">{{ bottom_1.name }}</div>
+                    <div class="clothes-color">Color: {{ bottom_1.color }}</div>
+                    <div class="clothes-price">{{ bottom_1.price }}원</div>
+                    <button class="shop-button">Shop Now</button>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="button-container">
-              <button class="add-to-cart">+ Add to Cart</button>
+          </div>
+          <div class="button-container">
+            <button class="add-to-cart">+ Add to Cart</button>
+          </div>
+        </div>
+        {% endif %} {% set images_2 = all_images['best_2'] %} {% if images_2.tops and
+        images_2.bottoms %} {% set top_2 = images_2.tops[0] %} {% set bottom_2 = images_2.bottoms[0]
+        %}
+        <div class="outfit">
+          <h3>Best combination 2</h3>
+          <div class="outfit-content">
+            <img
+              src="{{ url_for('static', filename='images/result/combination/best_2/bottom_output.jpg') }}"
+              alt="Combination Model" />
+            <div class="outfit-details">
+              {# Top Item #}
+              <div class="item">
+                <div class="image-and-text">
+                  <img
+                    src="{{ url_for('static', filename='images/result/combination/best_2/' + top_image_2) }}"
+                    alt="Top Image" />
+                  <div>
+                    <div class="clothes-type">Top</div>
+                    <div class="clothes-name">{{ top_2.name }}</div>
+                    <div class="clothes-color">Color: {{ top_2.color }}</div>
+                    <div class="clothes-price">{{ top_2.price }}원</div>
+                    <button class="shop-button">Shop Now</button>
+                  </div>
+                </div>
+              </div>
+              {# Bottom Item #}
+              <div class="item">
+                <div class="image-and-text">
+                  <img
+                    src="{{ url_for('static', filename='images/result/combination/best_2/' + bottom_image_2) }}"
+                    alt="Bottom Image" />
+                  <div>
+                    <div class="clothes-type">Bottom</div>
+                    <div class="clothes-name">{{ bottom_2.name }}</div>
+                    <div class="clothes-color">Color: {{ bottom_2.color }}</div>
+                    <div class="clothes-price">{{ bottom_2.price }}원</div>
+                    <button class="shop-button">Shop Now</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          {% endfor %}
-        {% endfor %}
+          <div class="button-container">
+            <button class="add-to-cart">+ Add to Cart</button>
+          </div>
+        </div>
+        {% endif %} {% set images_3 = all_images['best_3'] %} {% if images_3.tops and
+        images_3.bottoms %} {% set top_3 = images_3.tops[0] %} {% set bottom_3 = images_3.bottoms[0]
+        %}
+        <div class="outfit">
+          <h3>Best combination 3</h3>
+          <div class="outfit-content">
+            <img
+              src="{{ url_for('static', filename='images/result/combination/best_3/bottom_output.jpg') }}"
+              alt="Combination Model" />
+            <div class="outfit-details">
+              {# Top Item #}
+              <div class="item">
+                <div class="image-and-text">
+                  <img
+                    src="{{ url_for('static', filename='images/result/combination/best_3/' + top_image_3) }}"
+                    alt="Top Image" />
+                  <div>
+                    <div class="clothes-type">Top</div>
+                    <div class="clothes-name">{{ top_3.name }}</div>
+                    <div class="clothes-color">Color: {{ top_3.color }}</div>
+                    <div class="clothes-price">{{ top_3.price }}원</div>
+                    <button class="shop-button">Shop Now</button>
+                  </div>
+                </div>
+              </div>
+              {# Bottom Item #}
+              <div class="item">
+                <div class="image-and-text">
+                  <img
+                    src="{{ url_for('static', filename='images/result/combination/best_3/' + bottom_image_3) }}"
+                    alt="Bottom Image" />
+                  <div>
+                    <div class="clothes-type">Bottom</div>
+                    <div class="clothes-name">{{ bottom_3.name }}</div>
+                    <div class="clothes-color">Color: {{ bottom_3.color }}</div>
+                    <div class="clothes-price">{{ bottom_3.price }}원</div>
+                    <button class="shop-button">Shop Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="button-container">
+            <button class="add-to-cart">+ Add to Cart</button>
+          </div>
+        </div>
+        {% endif %}
       </section>
     </main>
     <footer class="footer">
@@ -145,7 +272,3 @@
     </footer>
   </body>
 </html>
-
-
-
-

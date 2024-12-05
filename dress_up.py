@@ -67,15 +67,38 @@ def process_images(top_img_path, bottom_img_path, output_folder):
     with open(bottom_output_path, "wb") as file:
         file.write(bottom_output.read())
 
+def find_image_by_prefix(directory, prefix):
+    """디렉토리에서 특정 접두사로 시작하는 첫 번째 이미지 파일을 찾습니다."""
+    if not os.path.exists(directory):
+        return None
+    
+    for filename in os.listdir(directory):
+        if filename.upper().startswith(prefix.upper()) and filename.lower().endswith(('.jpg', '.jpeg', '.png')):
+            return os.path.join(directory, filename)
+    return None
+
 # 이미지 경로 및 출력 폴더 설정
 combinations = [
-    (r".\static\images\result\combination\best_1\T1.jpg", r".\static\images\result\combination\best_1\B1.jpg", r".\static\images\result\combination\best_1"),
-    (r".\static\images\result\combination\best_2\T1.jpg", r".\static\images\result\combination\best_2\B2.jpg", r".\static\images\result\combination\best_2"),
-    (r".\static\images\result\combination\best_3\T1.jpg", r".\static\images\result\combination\best_3\B3.jpg", r".\static\images\result\combination\best_3")
+    (r".\static\images\result\combination\best_1", r".\static\images\result\combination\best_1", r".\static\images\result\combination\best_1"),
+    (r".\static\images\result\combination\best_2", r".\static\images\result\combination\best_2", r".\static\images\result\combination\best_2"),
+    (r".\static\images\result\combination\best_3", r".\static\images\result\combination\best_3", r".\static\images\result\combination\best_3")
 ]
 
 # 각 조합에 대해 이미지 처리 수행
-for top_img, bottom_img, output_folder in combinations:
+for top_dir, bottom_dir, output_folder in combinations:
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
+    
+    # T로 시작하는 상의 이미지와 B로 시작하는 하의 이미지 찾기
+    top_img = find_image_by_prefix(top_dir, 'T')
+    bottom_img = find_image_by_prefix(bottom_dir, 'B')
+    
+    if not top_img:
+        logging.error(f"No top image (starting with 'T') found in {top_dir}")
+        continue
+    
+    if not bottom_img:
+        logging.error(f"No bottom image (starting with 'B') found in {bottom_dir}")
+        continue
+        
     process_images(top_img, bottom_img, output_folder)
