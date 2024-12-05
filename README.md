@@ -91,7 +91,7 @@ The recommend_combination function analyzes EEG data to recommend clothing combi
 --- 
 
 
-### preprocessing.py
+### preprocess.py
 
 ![image](https://github.com/user-attachments/assets/44edb9f4-2690-4a2b-b4a4-c53bba2dcbe7)
 
