@@ -68,10 +68,10 @@ def combination_task2(
         valid_extensions = ('.jpg', '.jpeg', '.png', '.bmp')
 
         # 폴더 내 모든 파일을 순차적으로 확인
-        for image_name in os.listdir(image_folder):
+        for image_name in os.listdir(combination_resized_path):
             # 이미지 파일인지 확인
             if image_name.lower().endswith(valid_extensions):
-                image_path = os.path.join(image_folder, image_name)
+                image_path = os.path.join(combination_resized_path, image_name)
                 task_images.append(pygame.image.load(image_path))
 
         # 실험 시작
