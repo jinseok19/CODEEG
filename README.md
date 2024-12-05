@@ -1,6 +1,7 @@
-# CODDEG #### Neuro Engineering
+# CODDEG
+#### Neuro Engineering
 
-### project start
+## project start
 #### Installation
 
 To install the necessary packages, run:
