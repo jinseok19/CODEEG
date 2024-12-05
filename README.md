@@ -69,6 +69,20 @@ CODEEG/
 
 Wearing the MAVE EEG device, we test top and bottom images. Using P300 signals, we select the top and bottom images to create combination images. These results are then processed using the Replicate API with the IDM-VTON model to virtually dress the user image.
 
+#### Steps to Use
+
+##### Step 1: Initial Testing
+1. Test the top clothing items.
+2. Test the bottom clothing items.
+
+##### Step 2: Combination and Dressing
+1. Test the clothing combinations.
+2. Proceed with the virtual dressing:
+   - 2.1 Upload your full-body image.
+   - 2.2 Click the 'Dress Up' button.
+
+##### Step 3: Viewing Results
+1. Click the 'View Report' button to see the results.
 ---
 
 ### IDM-VTON
