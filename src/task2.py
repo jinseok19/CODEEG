@@ -57,12 +57,22 @@ def combination_task2(
         # 이미지 미리 로드
         top_image = pygame.image.load(background_path)
         task_images = []
+        '''
         for num_image in range(num_images):
             image_path = os.path.join(
                 image_folder,
                 f"combination_{num_image}.jpg"
             )
             task_images.append(pygame.image.load(image_path))
+        '''
+        valid_extensions = ('.jpg', '.jpeg', '.png', '.bmp')
+
+        # 폴더 내 모든 파일을 순차적으로 확인
+        for image_name in os.listdir(image_folder):
+            # 이미지 파일인지 확인
+            if image_name.lower().endswith(valid_extensions):
+                image_path = os.path.join(image_folder, image_name)
+                task_images.append(pygame.image.load(image_path))
 
         # 실험 시작
         for _ in range(num_trials):

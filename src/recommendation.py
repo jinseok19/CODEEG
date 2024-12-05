@@ -34,7 +34,7 @@ def recommend_combination(
             max_values.append(max_value)
         max_values_per_channel.append(max_values)
 
-    # 각 채널의 최대값 상위 3개 인덱스 추출
+    # 각 채널의 최대값 상위 5개 인덱스 추출
     indices_of_largest_values_per_channel = []
     for channel in range(len(max_values_per_channel)):
         indices_of_largest_values = sorted(

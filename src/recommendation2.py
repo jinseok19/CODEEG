@@ -77,11 +77,11 @@ def recommend_combination2(
         if len(top_indices) == 3:
             break
 
-    save_dir = Path(result_dir)
-    save_dir.mkdir(parents=True, exist_ok=True)
+    result_dir = Path(result_dir)
+    result_dir.mkdir(parents=True, exist_ok=True)
 
     # 폴더 비우기
-    for file in save_dir.iterdir():
+    for file in result_dir.iterdir():
         if file.is_file():
             file.unlink()
 
@@ -92,7 +92,7 @@ def recommend_combination2(
     combination_files = sorted(Path(combination_folder).glob("combination_*.jpg"))
 
     for rank, idx in enumerate(top_indices, 1):
-        combination_file = combination_files[idx]
+        combination_file = combination_files[idx+25]
         
         if not combination_file.exists():
             print(f"Error: 조합 파일이 없습니다. {combination_file}")
@@ -108,7 +108,7 @@ def recommend_combination2(
             continue
 
         # 순위별 폴더 생성
-        best_dir = save_dir / f"best_{rank}"
+        best_dir = result_dir / f"best_{rank}"
         best_dir.mkdir(parents=True, exist_ok=True)
 
         # 상의 파일 복사
