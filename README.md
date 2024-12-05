@@ -87,6 +87,8 @@ This code provides functionality to visualize and save EEG data, plotting variou
 
 ### recommendation.py
 
+![image](https://github.com/user-attachments/assets/2a6b7eb1-745b-43d5-8753-a26095230533)
+
 The recommend_combination function analyzes EEG data to recommend clothing combinations by identifying the top evoked responses within a specified time window and saves the corresponding images. It supports both "tops" and "bottoms" clothing types, ensuring the recommended images are stored in a designated directory.
 
 --- 
