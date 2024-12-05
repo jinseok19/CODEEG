@@ -1,7 +1,7 @@
 # CODDEG
 Neuro Engineering
 
-# Project Structure
+### Project Structure
 
 ```
 CODEEG/
@@ -44,9 +44,9 @@ CODEEG/
 ├── erp_combination2.py         # Improved clothing combination analysis
 └── README.md                   # Project documentation
 ```
+### 
 
-
-
+---
 ### IDM-VTOM
 Non-Commercial use only!
 This is the current best-in-class virtual try-on model, created by the Korea Advanced Institute of Science & Technology (KAIST). It’s capable of virtual try-on “in the wild” which has notoriously been difficult for generative models to tackle, until now!
