@@ -1,101 +1,97 @@
 /* General Styles */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-  }
-  
-  /* Header Section */
-  .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 160px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-  }
-  
-  .logo h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #000;
-    margin: 0;
-  }
-
-
-  .search-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Slightly increased gap for better spacing */
-    background-color: #f9f9f9;
-    padding: 8px; /* Increased padding for a more balanced look */
-    border-radius: 4px;
-    width: 100%; /* Ensure the search bar uses available space */
-    max-width: 600px; /* Set a maximum width to control the size */
-    margin-left: auto; /* Push the search bar to the right */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
 }
 
+/* Header Section */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 160px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+}
+
+.logo h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Slightly increased gap for better spacing */
+  background-color: #f9f9f9;
+  padding: 8px; /* Increased padding for a more balanced look */
+  border-radius: 4px;
+  width: 100%; /* Ensure the search bar uses available space */
+  max-width: 600px; /* Set a maximum width to control the size */
+  margin-left: auto; /* Push the search bar to the right */
+}
 
 .category-select {
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 14px;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .search-input {
-    padding: 8px;
-    width: 400px; /* Increased width for a larger search input */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    background-color: transparent;
-    font-size: 14px;
-    transition: border-color 0.3s ease;
+  padding: 8px;
+  width: 400px; /* Increased width for a larger search input */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  background-color: transparent;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
 }
 
 .search-input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
 .icon-button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    padding: 10px;
-    display: inline-flex;
-    align-items: center;
-    justify-content : center;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
 }
 
 .icon-button:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
 .icon-button:focus {
-    outline: 2px solid #007bff;
-    outline-offset: 2px;
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
 }
 
 .icon-button svg {
-    width: 24px;
-    height: 24px;
-    fill: #333;
-    transition: fill 0.3s ease;
+  width: 24px;
+  height: 24px;
+  fill: #333;
+  transition: fill 0.3s ease;
 }
 
 .icon-button:hover svg {
-    fill: #007bff;
+  fill: #007bff;
 }
 
-
 /*여기 까지 header */
-
 
 /*nav */
 .navbar {
@@ -108,9 +104,6 @@ body {
   border-bottom: 1px solid #444;
 }
 
-
-
-
 /* 전체 레이아웃 정리 */
 .navbar-left {
   display: flex;
@@ -119,7 +112,7 @@ body {
   margin-left: 150px;
 }
 
-/* 드롭다운 버튼 스타일 */  
+/* 드롭다운 버튼 스타일 */
 .dropdown-toggle {
   background-color: #000000; /* 파란색 배경 */
   color: white;
@@ -132,7 +125,7 @@ body {
 }
 
 .dropdown-toggle:hover {
-  background-color: rgb(77, 77, 77) ; /* 어두운 파란색 */
+  background-color: rgb(77, 77, 77); /* 어두운 파란색 */
   transform: scale(1.05); /* 크기 확대 */
 }
 
@@ -178,15 +171,14 @@ body {
 
 /* Fix hover background issue */
 .nav-link:hover {
-  background-color: rgb(77, 77, 77)  ; /* Subtle gray background on hover */
-  color: #007BFF; /* Blue text color on hover */
+  background-color: rgb(77, 77, 77); /* Subtle gray background on hover */
+  color: #007bff; /* Blue text color on hover */
 }
-
 
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 10px; /* 버튼 간격 */  
+  gap: 10px; /* 버튼 간격 */
   margin-right: 150px;
 }
 
@@ -246,8 +238,6 @@ body {
   color: #f00; /* 하트처럼 컬러 변경 */
 }
 
-
-
 hr {
   margin-left: 20px; /* Adds 20px space on the left */
   margin-right: 20px; /* Adds 20px space on the right */
@@ -255,105 +245,100 @@ hr {
   border-top: 1px solid #ccc; /* Optional: custom border style */
 }
 
-  /* Section Content */
-  .section-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .section-title {
-    flex-grow: 1;
-    text-align: left;
-    font-size: 32px;
-    margin-left: 140px;
-  }
-  
-  .section-image {
-    margin-right: 200px;
-  }
+/* Section Content */
+.section-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
 
-  
-  
-  .dropdown {
-    position: relative;
-  }
+.section-title {
+  flex-grow: 1;
+  text-align: left;
+  font-size: 32px;
+  margin-left: 140px;
+}
 
-  .menu-button,
-  .dropdown-toggle {
-    margin-right: 10px; /* 버튼 간 간격 */
-  }
+.section-image {
+  margin-right: 200px;
+}
 
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    z-index: 1000;
-  }
+.dropdown {
+  position: relative;
+}
 
-  .dropdown:hover .dropdown-menu {
-    display: block; /* 드롭다운 메뉴 표시 */
-  }
+.menu-button,
+.dropdown-toggle {
+  margin-right: 10px; /* 버튼 간 간격 */
+}
 
-  a {
-    text-decoration: none;
-    padding: 5px 10px; /* 텍스트 링크 주변 간격 */
-  }
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+}
 
-  a:hover {
-    background-color: #f0f0f0; /* 마우스 오버 효과 */
-  }
-  
- 
-  .nav-button {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px 10px;
-  }
-  
-  .nav-item a:hover,
-  .nav-button:hover {
-    color: #ccc;
-  }
-  
-  /* Icon Buttons */
-  .nav-icons {
-    display: flex;
-    gap: 16px;
-  }
-  
-  
-  
+.dropdown:hover .dropdown-menu {
+  display: block; /* 드롭다운 메뉴 표시 */
+}
+
+a {
+  text-decoration: none;
+  padding: 5px 10px; /* 텍스트 링크 주변 간격 */
+}
+
+a:hover {
+  background-color: #f0f0f0; /* 마우스 오버 효과 */
+}
+
+.nav-button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.nav-item a:hover,
+.nav-button:hover {
+  color: #ccc;
+}
+
+/* Icon Buttons */
+.nav-icons {
+  display: flex;
+  gap: 16px;
+}
+
 /* Main section styling */
 /* Main Section */
 
 main {
   max-width: 1200px; /* 최대 너비를 늘림 */
-  margin:  auto; /* 상하 좌우 여백 조정 */
+  margin: auto; /* 상하 좌우 여백 조정 */
   padding: 20px; /* 내부 여백 증가 */
 }
-
 
 .test-section {
   text-align: center;
   height: auto;
   width: 1100px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 40px;
   border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 2px 4px 10px black;
 }
 
+/* Header Section */
 /* Header Section */
 .header-container {
   display: flex;
@@ -361,27 +346,26 @@ main {
   align-items: center;
   margin-left: 160px;
   margin-right: 160px;
-  margin-top : 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
-
 }
 
 .header-title {
-  font-size: 60px;
-  font-weight: bold;
+  font-size: 35px;
+  /* font-weight: bold; */
   margin-bottom: 10px;
   color: #333;
 }
 
 .header-logo {
-  width: 109px;
-  height: 101px;
+  width: 80px;
+  height: 80px;
 }
-
+/* Report section */
 
 /* Content Section */
 .step-title {
-  font-size: 20px;
+  font-size: 35px;
   font-weight: bold;
   margin: 20px 0 10px;
   color: #333;
@@ -399,11 +383,12 @@ main {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 40px;
 }
 
 .clothing-item {
-  width: 120px;
+  width: 130px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -433,79 +418,66 @@ main {
   transform: scale(1.05); /* 버튼 크기를 살짝 키움 */
 }
 
-
-
-
-  /* Footer */
-  .footer {
-    background-color: #000;
-    color: #fff;
-    padding-top: 1cm;
-    padding-bottom: 2cm;
-    text-align: center;
-    border-top: 1px solid #444;
-  }
-  .footer__right{
-
-    margin-right: 50px;
-    padding-right : 50px;
-
-
-  }
-
-  .footer_right h6 {
-    padding-right: 20px; /* 원하는 만큼의 여백 */
-    margin-right: 20px;  /* 필요하면 margin으로 추가 */
+/* Footer */
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding-top: 1cm;
+  padding-bottom: 2cm;
+  text-align: center;
+  border-top: 1px solid #444;
+}
+.footer__right {
+  margin-right: 50px;
+  padding-right: 50px;
 }
 
-
-  .footer__aside-bottom {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .footer__copyright {
-    font-size: 10px;
-    padding-left: 2cm;
-  }
-  
-  .footer__payment-icons img {
-    margin-left: 10px;
-    width: 30px;
-    height: 20px;
-  } 
-  
-  .footer__info {
-    padding-top: 10px;
-    font-size: 10px;
-    display: flex;
-    gap: 20px;
-    margin-left: 20px;
-  }
-
-
-  .footer_right {
-    font-size: 14px; /* 원하는 크기로 조정 */
-    font-weight: normal; /* 필요 시 글자 두께 조정 */
-    color: #ffffff; /* 필요하면 글자 색상도 변경 */
+.footer_right h6 {
+  padding-right: 20px; /* 원하는 만큼의 여백 */
+  margin-right: 20px; /* 필요하면 margin으로 추가 */
 }
 
-
-  footer >  hr {
-    position: relative;
-    width: auto; /* Full viewport width to ensure it spans the screen */
-    margin: 0; /* Remove any default margins */
-    border: none; /* Remove default borders */
-    border-top: 1px solid #ffffff; /* Add a single custom border */
-    box-sizing: border-box;
-     /* Ensure padding/margin don't affect the width */
+.footer__aside-bottom {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-  /* Icon Button */
-  
-  
- 
+.footer__copyright {
+  font-size: 10px;
+  padding-left: 2cm;
+}
 
+.footer__payment-icons img {
+  margin-left: 10px;
+  width: 30px;
+  height: 20px;
+}
+
+.footer__info {
+  padding-top: 10px;
+  font-size: 10px;
+  display: flex;
+  gap: 20px;
+  margin-left: 20px;
+}
+
+.footer_right {
+  font-size: 14px; /* 원하는 크기로 조정 */
+  font-weight: normal; /* 필요 시 글자 두께 조정 */
+  color: #ffffff; /* 필요하면 글자 색상도 변경 */
+}
+
+footer > hr {
+  position: relative;
+  width: auto; /* Full viewport width to ensure it spans the screen */
+  margin: 0; /* Remove any default margins */
+  border: none; /* Remove default borders */
+  border-top: 1px solid #ffffff; /* Add a single custom border */
+  box-sizing: border-box;
+  /* Ensure padding/margin don't affect the width */
+}
+
+/* Icon Button */

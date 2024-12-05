@@ -112,3 +112,31 @@
   width: 200px;
   height: 200px;
 }
+
+.next-step-button-container {
+  display: flex;
+  bottom: 170px;
+  margin-bottom: 20px;
+  right: 20px;
+  margin-right: 40px;
+  justify-content: right; /* 수평 가운데 정렬 */
+  transform: translateY(0);
+  z-index: 1;
+}
+
+.large-button {
+  padding: 16px 32px; /* 버튼 크기 확대 */
+  font-size: 18px; /* 텍스트 크기 증가 */
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 8px; /* 약간 둥근 모서리 */
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.large-button:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  transform: scale(1.05);
+}
