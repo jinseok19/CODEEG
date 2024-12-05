@@ -46,7 +46,8 @@ CODEEG/
 ```
 ### Project Process
 
-![image](https://github.com/user-attachments/assets/5396f46e-4f08-458b-a27d-1595b3fa6402)
+![image](https://github.com/user-attachments/assets/aef12f98-81f8-48a0-a83e-d30749ea8662)
+
 
 
 
