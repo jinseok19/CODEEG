@@ -1,7 +1,11 @@
 # CODDEG
 Neuro Engineering
 
-### fast start
+### project start
+
+```
+pip install flask
+```
 
 
 
