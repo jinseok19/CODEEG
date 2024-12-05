@@ -4,23 +4,42 @@ import csv
 import pygame
 import os
 import atexit
+from src.preprocess import resize_images_in_folder
+
+# Relative paths for images
+tops_init_path = './images/tops_init'
+tops_resized_path = './images/tops'
+bottoms_init_path = './images/bottoms_init'
+bottoms_resized_path = './images/bottoms'
+
+# Create directories if they don't exist
+for path in [tops_init_path, tops_resized_path, bottoms_init_path, bottoms_resized_path]:
+    if not os.path.exists(path):
+        os.makedirs(path)
 
 
 def combination_task(
     screen_width: int,
     screen_height: int,
     isi: int,
-    top_image_path: str,
+    background_path: str,
     image_folder: str,
     num_trials: int,
     num_images: int,
     event_save_path: str,
     clothes_type: str,
 ) -> str:
+    
+    resize_images_in_folder(tops_init_path, tops_resized_path)
+    resize_images_in_folder(bottoms_init_path, bottoms_resized_path)
+    
     # Pygame 초기화 및 종료 보장
     pygame.init()
     atexit.register(pygame.quit)
-
+    
+    print(screen_height)
+    print(screen_width)
+    
     # 화면 설정
     screen = pygame.display.set_mode((screen_width, screen_height))
     current_time = datetime.datetime.now()
@@ -35,8 +54,9 @@ def combination_task(
         writer = csv.writer(file)
         writer.writerow(["ISI", "RT", "Response", "Stimulus"])
 
-        # 이미지 미리 로드
-        top_image = pygame.image.load(top_image_path)
+
+        top_image = pygame.image.load(background_path)
+
         task_images = []
         for num_image in range(num_images):
             image_path = os.path.join(

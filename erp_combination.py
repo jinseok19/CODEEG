@@ -16,7 +16,8 @@ def erp_combination(
     fs: int,
     channels: List[str],
     isi: int,
-    top_image_path: str,
+    # top_image_path: str,
+    background_path: str,
     clothes_type: str,
     image_folder: str,
     num_trials: int,
@@ -42,7 +43,8 @@ def erp_combination(
             screen_width=screen_width,
             screen_height=screen_height,
             isi=isi,
-            top_image_path=top_image_path,
+            # top_image_path=top_image_path,
+            background_path=background_path,
             image_folder=image_folder,
             num_trials=num_trials,
             num_images=num_images,
@@ -67,8 +69,8 @@ def erp_combination(
     if mode=="task":
         return event_file, data_file_path
 
-    # data_file_path = 'data\\2024-11-04\Rawdata_16.57.47.csv'
-    # event_file = 'event\\2024-11-04\combination_event_16.57.54.971043.csv'
+    data_file_path = 'data\\2024-11-04\Rawdata_16.57.47.csv'
+    event_file = 'event\\2024-11-04\combination_event_16.57.54.971043.csv'
 
     analyze_eeg = AnalyzeEEG(channels=channels, fs=fs)
     eeg, eeg_times, avg_evoked_list, times_list = analyze_eeg.analyze_erp(
@@ -122,6 +124,7 @@ def erp_combination(
         channels=channels,
         image_folder=image_folder,
         clothes_type=clothes_type,
+        mode=mode
     )
 
     return event_file, recommended_images
@@ -269,7 +272,7 @@ if __name__ == "__main__":
         fs=args.fs,
         channels=args.channels,
         isi=args.isi,
-        top_image_path=f"{args.image_path}/tops/T{args.tops_order}.jpg",
+        background_path=f"{args.image_path}/backgrounds/B0.jpg",
         image_folder=f"{args.image_path}/{args.clothes_type}",
         clothes_type=f"{args.clothes_type}",
         num_trials=args.num_trials,

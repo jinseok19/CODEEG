@@ -1,9 +1,12 @@
 from typing import List, Tuple
+
+import os
 import copy
 
 import numpy as np
 import pandas as pd
 
+from PIL import Image
 from .iir import FilterSignal
 from sklearn.decomposition import FastICA
 
@@ -189,3 +192,121 @@ class PreprocessEEG:
             ma_signal.append(ma)
         ma_signal = np.array(ma_signal)
         return ma_signal
+
+
+def resize_images_in_folder(folder_path, output_folder, target_size=()):
+    """
+    Resize images in a folder to the target size, with additional statistics.
+
+    Args:
+        folder_path (str): Path to the folder containing images.
+        output_folder (str): Path to save resized images.
+        target_size (tuple): Target size as (width, height). Automatically set for `tops_init` and `bottoms_init`.
+    """
+    # Automatically set target_size based on folder name
+    folder_name = os.path.basename(folder_path)
+    if folder_name == "tops_init":
+        target_size = (680, 680)
+    elif folder_name == "bottoms_init":
+        target_size = (600, 700)
+    elif folder_name == "chosen_combinations_init":
+        target_size = (500, 800)
+    elif not target_size:
+        raise ValueError("Target size must be specified if folder name is not 'tops_init' or 'bottoms_init'.")
+
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    
+    min_width, min_height = float('inf'), float('inf')
+    total_width, total_height = 0, 0
+    image_count = 0
+    
+    # Calculate minimum width and height
+    for file_name in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, file_name)
+        if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
+            with Image.open(file_path) as img:
+                width, height = img.size
+                min_width = min(min_width, width)
+                min_height = min(min_height, height)
+
+    print(f"Minimum Width: {min_width}\nMinimum Height: {min_height}")
+    
+    # Resize images and collect statistics
+    for file_name in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, file_name)
+        if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
+            with Image.open(file_path) as img:
+                # Convert RGBA to RGB if necessary
+                if img.mode == 'RGBA':
+                    img = img.convert('RGB')
+                resized_img = img.resize(target_size)
+                output_file_path = os.path.join(output_folder, file_name)
+                # Ensure the correct extension for saving
+                if not output_file_path.lower().endswith(('.jpg', '.jpeg')):
+                    output_file_path = os.path.splitext(output_file_path)[0] + ".jpg"
+                resized_img.save(output_file_path, format='JPEG')
+                
+                # Update statistics
+                total_width += resized_img.width
+                total_height += resized_img.height
+                image_count += 1
+
+    # Calculate and print averages
+    if image_count > 0:
+        avg_width = total_width / image_count
+        avg_height = total_height / image_count
+        print(f"Average Width: {avg_width:.2f}\nAverage Height: {avg_height:.2f}")
+    else:
+        print("No images were resized.")
+    
+    # Check output directory image statistics
+    ext_counts = {}
+    for file_name in os.listdir(output_folder):
+        ext = os.path.splitext(file_name)[1].lower()
+        ext_counts[ext] = ext_counts.get(ext, 0) + 1
+    print(f"Total Images in Output Folder: {sum(ext_counts.values())}")
+    print("Image Extensions Count:", ", ".join([f"{count} images with '{ext}' extension\n" for ext, count in ext_counts.items()]))
+
+
+def combine_images(top_folder, bottom_folder, output_folder):
+    """
+    Combine top and bottom images vertically to create a single image.
+    
+    Args:
+        top_folder (str): Path to the folder containing top images.
+        bottom_folder (str): Path to the folder containing bottom images.
+        output_folder (str): Path to save combined images.
+    """
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    
+    top_images = [f for f in os.listdir(top_folder) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif'))]
+    bottom_images = [f for f in os.listdir(bottom_folder) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif'))]
+    cnt = 0
+    
+    for top_image in top_images:
+        for bottom_image in bottom_images:
+            top_path = os.path.join(top_folder, top_image)
+            bottom_path = os.path.join(bottom_folder, bottom_image)
+            
+            with Image.open(top_path) as top, Image.open(bottom_path) as bottom:
+                # Ensure both images have the same width for seamless combination
+                new_width = max(top.width, bottom.width)
+                top = top.resize((new_width, int(top.height * new_width / top.width)))
+                bottom = bottom.resize((new_width, int(bottom.height * new_width / bottom.width)))
+                
+                # Create a blank canvas for the combined image
+                combined_height = top.height + bottom.height
+                combined_image = Image.new('RGB', (new_width, combined_height))
+                
+                # Paste the two images
+                combined_image.paste(top, (0, 0))
+                combined_image.paste(bottom, (0, top.height))
+                
+                # Save with a descriptive name
+                combined_name = f"combination_{os.path.splitext(top_image)[0]}_{os.path.splitext(bottom_image)[0]}.jpg"
+                # combined_name = f"combination_{cnt}.jpg"
+                combined_image.save(os.path.join(output_folder, combined_name))
+                cnt += 1
+    print(f"All combinations saved in {output_folder}.")

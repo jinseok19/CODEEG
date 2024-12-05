@@ -4,10 +4,10 @@ from datetime import datetime
 
 import pandas as pd
 
-from src.task2 import combination_display_task
+from src.task2 import combination_task2
 from src.analysis import AnalyzeEEG
 from src.plot import PlotEEG
-from src.recommendation import recommend_combination
+from src.recommendation2 import recommend_combination2
 
 
 def erp_combination2(
@@ -17,7 +17,11 @@ def erp_combination2(
     channels: List[str],
     isi: int,
     event_save_path: str,
+    image_folder: str,
+    num_trials: int,
+    num_images: int,
     result_dir: str,
+    background_path: str,
     lowcut: float = 1.0,
     highcut: float = 30.0,
     tmin: float = -0.2,
@@ -35,11 +39,16 @@ def erp_combination2(
         if not os.path.exists(f"./event/{today}"):
             os.makedirs(f"./event/{today}")
 
-        event_file = combination_display_task(
+        event_file = combination_task2(
             screen_width=screen_width,
             screen_height=screen_height,
             isi=isi,
+            background_path=background_path,
+            image_folder=image_folder,
+            num_trials=num_trials,
+            num_images=num_images,
             event_save_path=f"{event_save_path}/{today}",
+            # clothes_type=clothes_type
         )
 
         rawdata_folders = os.listdir("C:/MAVE_RawData")
@@ -66,7 +75,7 @@ def erp_combination2(
         eeg_filename=data_file_path,
         event_filename=event_file,
         result_dir=result_dir,
-        num_types=num_types,  # 조합 개수
+        num_types=25,  # 조합 개수
         lowcut=lowcut,
         highcut=highcut,
         tmin=tmin,
@@ -94,19 +103,22 @@ def erp_combination2(
             filename=f"combination_T{top_num}_B{bottom_num}_electrode",
         )
 
-    # 여기서는 조합에 대한 추천을 반환
+    '''# 여기서는 조합에 대한 추천을 반환
     max_response_idx = max(
         range(len(avg_evoked_list)),
         key=lambda i: max(max(channel) for channel in avg_evoked_list[i])
     )
 
     top_num = (max_response_idx // num_bottoms) + 1
-    bottom_num = (max_response_idx % num_bottoms) + 1
+    bottom_num = (max_response_idx % num_bottoms) + 1'''
 
-    recommended_combination = [
-        f"static/images/result/tops/T{top_num}.jpg",
-        f"static/images/result/bottoms/B{bottom_num}.jpg"
-    ]
+    recommended_combination = recommend_combination2(
+        avg_evoked_list=avg_evoked_list,
+        times_list=times_list,
+        channels=channels,
+        image_folder=image_folder,
+        mode=mode
+    )
 
     return event_file, recommended_combination
 
@@ -163,6 +175,24 @@ if __name__ == "__main__":
         type=str,
         default="./event",
         help="Set a record of events file saving path",
+    )
+    parser.add_argument(
+        "--image_path",
+        type=str,
+        default="./images",
+        help="Get image data path to use in the task",
+    )
+    parser.add_argument(
+        "--num_trials",
+        type=int,
+        default=10,
+        help="Set number of trials to use in the task",
+    )
+    parser.add_argument(
+        "--num_images",
+        type=int,
+        default=25,
+        help="Set number of clothes to use in the task",
     )
     parser.add_argument(
         "--result_dir",
@@ -238,7 +268,11 @@ if __name__ == "__main__":
         fs=args.fs,
         channels=args.channels,
         isi=args.isi,
+        background_path=f"{args.image_path}/backgrounds/B0.jpg",
         event_save_path=args.event_save_path,
+        image_folder=f"{args.image_path}/chosen_combinations",
+        num_trials=args.num_trials,
+        num_images=args.num_images,
         result_dir=f"{args.result_dir}/combination/{args.result_dir_num}",
         lowcut=args.lowcut,
         highcut=args.highcut,
