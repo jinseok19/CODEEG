@@ -1,5 +1,4 @@
-# CODDEG
-Neuro Engineering
+# CODDEG #### Neuro Engineering
 
 ### project start
 #### Installation
