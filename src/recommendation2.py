@@ -17,15 +17,12 @@ def recommend_combination2(
     times_list: List[np.ndarray], 
     channels: List[str], 
     image_folder: str, 
-    tops_folder: str, 
-    bottoms_folder: str, 
-    combination_folder: str, 
     mode: str = "all"
 ) -> List[str]:
     
     tops_folder = './static/images/result/tops'
     bottoms_folder = './static/images/result/bottoms'
-    combination_folder = './images/chosen_combination'
+    combination_folder = './images/chosen_combinations'
 
     result_dir = 'static/images/result/combination'
     max_values_per_channel = []
@@ -89,10 +86,14 @@ def recommend_combination2(
     top_recommendations = []
     # 상의/하의 이름 추출 및 저장
     top_recommendations = []
-    combination_files = sorted(Path(combination_folder).glob("combination_*.jpg"))
+    # 'combination_*.jpg' 패턴에 맞는 파일들 가져오기
+    combination_files = list(Path(combination_folder).glob("combination_*.jpg"))
+
+    # 파일을 생성 시간 기준으로 정렬
+    combination_files = sorted(combination_files, key=lambda x: os.path.getctime(x))
 
     for rank, idx in enumerate(top_indices, 1):
-        combination_file = combination_files[idx+25]
+        combination_file = combination_files[idx]
         
         if not combination_file.exists():
             print(f"Error: 조합 파일이 없습니다. {combination_file}")

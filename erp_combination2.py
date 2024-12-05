@@ -75,7 +75,7 @@ def erp_combination2(
         eeg_filename=data_file_path,
         event_filename=event_file,
         result_dir=result_dir,
-        num_types=num_types,  # 조합 개수
+        num_types=25,  # 조합 개수
         lowcut=lowcut,
         highcut=highcut,
         tmin=tmin,
