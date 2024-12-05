@@ -54,12 +54,35 @@ CODEEG/
 
 ---
 
-### ERP_COMBINATION
+### erp_combination.py
 
-![image](https://github.com/user-attachments/assets/6eb26b1a-9819-41d5-acff-37f237ec7607)
+![image](https://github.com/user-attachments/assets/23737f6c-4b88-4a1f-86df-0cfade3bae7d)
+
 
 This script processes EEG data to analyze and visualize ERP responses, recommending clothing combinations based on the analysis. It supports command-line arguments for flexible configuration and execution.
 
 ---
+### task.py
+
+This script initializes a Pygame environment to conduct a visual stimulus experiment, resizing images and logging response times to a CSV file. It supports customizable screen dimensions, inter-stimulus intervals, and trial configurations.
+
+--- 
+### analysis.py
+
+![image](https://github.com/user-attachments/assets/922c8c16-e1da-45b7-89ca-3468996f30dc)
 
 
+This module provides EEG analysis tools, including ERP, ERDS, and SSVEP analysis, with preprocessing capabilities such as filtering, normalization, and time synchronization. It supports various scaling methods for frequency domain analysis results.
+
+--- 
+### plot.py
+
+This code provides functionality to visualize and save EEG data, plotting various EEG channels and average FFT values for selected frequencies. The PlotEEG class generates plots for EEG data, while the plot_ssvep function visualizes average FFT values per frequency from a given DataFrame.
+
+--- 
+
+### recommendation.py
+
+The recommend_combination function analyzes EEG data to recommend clothing combinations by identifying the top evoked responses within a specified time window and saves the corresponding images. It supports both "tops" and "bottoms" clothing types, ensuring the recommended images are stored in a designated directory.
+
+--- 
