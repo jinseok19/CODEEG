@@ -50,6 +50,16 @@ CODEEG/
 
 
 ### IDM-VTOM
+Non-Commercial use only!
+This is the current best-in-class virtual try-on model, created by the Korea Advanced Institute of Science & Technology (KAIST). It’s capable of virtual try-on “in the wild” which has notoriously been difficult for generative models to tackle, until now!
+
+IDM-VTON : Improving Diffusion Models for Authentic Virtual Try-on in the Wild
+This is an official implementation of paper ‘Improving Diffusion Models for Authentic Virtual Try-on in the Wild’
+
+![image](https://github.com/user-attachments/assets/49c32793-3ed3-46fb-bb45-16f772af79c9)
+
+![image](https://github.com/user-attachments/assets/b91fd43e-5711-422b-b449-5d4ca7d06161)
+
 
 
 ---
