@@ -53,7 +53,13 @@ CODEEG/
 
 
 ---
+### dress_up.py
 
+![image](https://github.com/user-attachments/assets/8680333d-e2c1-4b40-8579-1f5dbb897855)
+
+The script processes images by using a Replicate client to apply a virtual try-on model to top and bottom clothing images, saving the results in specified output folders. It iterates over predefined directory combinations, finding images by prefix and logging the process.
+
+---
 ### erp_combination.py
 
 ![image](https://github.com/user-attachments/assets/23737f6c-4b88-4a1f-86df-0cfade3bae7d)
@@ -92,7 +98,6 @@ This code provides functionality to visualize and save EEG data, plotting variou
 The recommend_combination function analyzes EEG data to recommend clothing combinations by identifying the top evoked responses within a specified time window and saves the corresponding images. It supports both "tops" and "bottoms" clothing types, ensuring the recommended images are stored in a designated directory.
 
 --- 
-
 
 ### preprocess.py
 
