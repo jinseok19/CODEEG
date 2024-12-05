@@ -44,5 +44,11 @@ CODEEG/
 ├── erp_combination2.py         # Improved clothing combination analysis
 └── README.md                   # Project documentation
 ```
-### Project FLOW
+### Project Process
+
+![image](https://github.com/user-attachments/assets/5396f46e-4f08-458b-a27d-1595b3fa6402)
+
+
+### IDM-VTOM
+
 
