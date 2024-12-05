@@ -63,6 +63,8 @@ CODEEG/
 ├── erp_combination2.py         # Improved clothing combination analysis
 └── README.md                   # Project documentation
 ```
+
+---
 ### Project Process
 
 ![image](https://github.com/user-attachments/assets/f6e7cf17-b79d-45d1-9811-93d1ff4a9daf)
