@@ -138,6 +138,9 @@ Contains HTML templates used by the Flask application to render web pages for di
 
 These modules work together to provide a seamless experience for users, from uploading images to receiving personalized clothing recommendations based on EEG data.
 
+--- 
+## Detail
+
 ### dress_up.py
 
 ![image](https://github.com/user-attachments/assets/68c09e79-6f46-4348-98e1-fa61cafd65b5)
@@ -146,7 +149,7 @@ These modules work together to provide a seamless experience for users, from upl
 The script processes images by using a Replicate client to apply a virtual try-on model to top and bottom clothing images, saving the results in specified output folders. It iterates over predefined directory combinations, finding images by prefix and logging the process.
 
 ---
-## 자세히
+
 ### erp_combination.py
 
 ![image](https://github.com/user-attachments/assets/23737f6c-4b88-4a1f-86df-0cfade3bae7d)
