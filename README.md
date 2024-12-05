@@ -97,7 +97,46 @@ This is an official implementation of paper ‘Improving Diffusion Models for Au
 ![teaser2](https://github.com/user-attachments/assets/80695dc8-fc54-4e90-a4e5-ff3b2533563b)
 
 ---
+# abstract
+## Software Module Descriptions
 
+### `app.py`
+This module serves as the main entry point for the Flask web application. It handles routing, rendering HTML templates, and managing user sessions. Key functionalities include:
+- Initializing the Flask app and setting up configurations.
+- Defining routes for different steps of the application (`/step1`, `/step2`, `/step3`).
+- Handling image uploads and executing the `dress_up.py` script.
+- Rendering reports and managing image processing tasks asynchronously.
+
+### `src/task2.py`
+This module is responsible for managing the combination task for images. It includes:
+- Functions to combine and resize images.
+- A `combination_task2` function that uses Pygame to display images and record user responses.
+- Ensures directories for image storage are created and managed properly.
+
+### `src/recommendation2.py`
+This module provides functionality for recommending clothing combinations based on EEG data. It includes:
+- The `recommend_combination2` function, which processes EEG data to select top clothing combinations.
+- Methods to manage and store recommended images in a structured directory format.
+- Utilizes image processing to ensure the best combinations are selected and saved.
+
+### `erp_combination.py` and `erp_combination2.py`
+These modules (not fully detailed here) are likely responsible for processing EEG data to determine clothing preferences. They are used in conjunction with the main application to provide personalized recommendations.
+
+### `dress_up.py`
+This script is executed to apply virtual clothing to user images using the Replicate API. It processes top and bottom clothing images and saves the results in specified directories.
+
+### `static/uploads`
+This directory is used to store uploaded images temporarily during the processing phase.
+
+### `static/images/result`
+This directory structure is used to store the results of image processing tasks, including top, bottom, and combination images.
+
+### `templates`
+Contains HTML templates used by the Flask application to render web pages for different steps and reports.
+
+---
+
+These modules work together to provide a seamless experience for users, from uploading images to receiving personalized clothing recommendations based on EEG data.
 
 ### dress_up.py
 
@@ -107,6 +146,7 @@ This is an official implementation of paper ‘Improving Diffusion Models for Au
 The script processes images by using a Replicate client to apply a virtual try-on model to top and bottom clothing images, saving the results in specified output folders. It iterates over predefined directory combinations, finding images by prefix and logging the process.
 
 ---
+## 자세히
 ### erp_combination.py
 
 ![image](https://github.com/user-attachments/assets/23737f6c-4b88-4a1f-86df-0cfade3bae7d)
