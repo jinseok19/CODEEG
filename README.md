@@ -100,7 +100,7 @@ This is an official implementation of paper ‘Improving Diffusion Models for Au
 
 ---
 # abstract
-## Software Module Descriptions
+## 1.Software Module Descriptions
 
 ### `app.py`
 This module serves as the main entry point for the Flask web application. It handles routing, rendering HTML templates, and managing user sessions. Key functionalities include:
@@ -140,8 +140,8 @@ Contains HTML templates used by the Flask application to render web pages for di
 
 These modules work together to provide a seamless experience for users, from uploading images to receiving personalized clothing recommendations based on EEG data.
 
---- 
-## Detail
+
+## 2.Detail
 
 ### dress_up.py
 
