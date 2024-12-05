@@ -53,8 +53,9 @@ CODEEG/
 
 
 ### ERP_COMBINATION
----
+
 This script processes EEG data to analyze and visualize ERP responses, recommending clothing combinations based on the analysis. It supports command-line arguments for flexible configuration and execution.
+
 ---
 
 
