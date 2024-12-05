@@ -55,7 +55,8 @@ CODEEG/
 ---
 ### dress_up.py
 
-![image](https://github.com/user-attachments/assets/8680333d-e2c1-4b40-8579-1f5dbb897855)
+![image](https://github.com/user-attachments/assets/68c09e79-6f46-4348-98e1-fa61cafd65b5)
+
 
 The script processes images by using a Replicate client to apply a virtual try-on model to top and bottom clothing images, saving the results in specified output folders. It iterates over predefined directory combinations, finding images by prefix and logging the process.
 
