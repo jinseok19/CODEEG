@@ -26,9 +26,17 @@ CODEEG/
 │   └── task2.py
 ├── static/
 │   ├── css/
+│   │   ├── dress_up.css
+│   │   ├── styles_report.css
+│   │   ├── styles_start.css
+│   │   ├── styles_step1.css
+│   │   └── styles.css
 │   ├── data/
+│   │   └── clothes_info.csv
 │   ├── images/
 │   ├── js/
+│   │   ├── dress_up.js
+│   │   └── script.js
 │   └── uploads/
 ├── templates/
 │   ├── dress_up.html
@@ -44,3 +52,4 @@ CODEEG/
 ├── erp_combination2.py
 └── README.md
 ```
+
