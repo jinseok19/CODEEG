@@ -80,15 +80,16 @@ def recommend_combination2(
     combination_dir.mkdir(parents=True, exist_ok=True)
     print(f"결과 디렉토리 생성됨: {combination_dir}")
 
-    if mode != "all":
+    '''# 폴더 비우기
+    if mode == "all":
         for file in combination_dir.iterdir():
             if file.is_file():
-                file.unlink()  # 파일 삭제
+                file.unlink()  # 파일 삭제'''
 
     for idx in top_indices:
         image_filename = f"combination_{idx}.jpg"
         image = Image.open(image_filename)
-        combination_path = str(combination_dir / f"combination_{idx + 1}.jpg")
+        combination_path = str(combination_dir / f"best_{idx}/combination_{idx}.jpg")
         image.save(combination_path)
         print(f"조합 이미지 저장 완료: {combination_path}")
         top_recommendations.append(combination_path)

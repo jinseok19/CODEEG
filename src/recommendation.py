@@ -68,7 +68,7 @@ def recommend_combination(
     save_dir.mkdir(parents=True, exist_ok=True)
 
     # 폴더 비우기
-    if mode != "all":
+    if mode == "all":
         for file in save_dir.iterdir():
             if file.is_file():
                 file.unlink()  # 파일 삭제
