@@ -64,6 +64,7 @@ This script processes EEG data to analyze and visualize ERP responses, recommend
 ---
 ### task.py
 
+![image](https://github.com/user-attachments/assets/e0d5c2f8-d150-4c6e-9363-539294df6979)
 
 This script initializes a Pygame environment to conduct a visual stimulus experiment, resizing images and logging response times to a CSV file. It supports customizable screen dimensions, inter-stimulus intervals, and trial configurations.
 
