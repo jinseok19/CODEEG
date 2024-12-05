@@ -44,4 +44,5 @@ CODEEG/
 ├── erp_combination2.py         # Improved clothing combination analysis
 └── README.md                   # Project documentation
 ```
+### Project FLOW
 
