@@ -64,6 +64,7 @@ This script processes EEG data to analyze and visualize ERP responses, recommend
 ---
 ### task.py
 
+
 This script initializes a Pygame environment to conduct a visual stimulus experiment, resizing images and logging response times to a CSV file. It supports customizable screen dimensions, inter-stimulus intervals, and trial configurations.
 
 --- 
@@ -76,6 +77,8 @@ This module provides EEG analysis tools, including ERP, ERDS, and SSVEP analysis
 
 --- 
 ### plot.py
+
+![image](https://github.com/user-attachments/assets/dceb1295-166b-4ccf-a396-6f60930f7599)
 
 This code provides functionality to visualize and save EEG data, plotting various EEG channels and average FFT values for selected frequencies. The PlotEEG class generates plots for EEG data, while the plot_ssvep function visualizes average FFT values per frequency from a given DataFrame.
 
