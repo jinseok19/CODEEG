@@ -5,11 +5,17 @@ Neuro Engineering
 #### Installation
 
 To install the necessary packages, run:
-```
+```bash
 pip install flask
+pip install replicate
 ```
 
+#### Run the Application
 
+To start the application, execute:
+```bash
+python app.py
+```
 
 ### Project Structure
 
