@@ -154,3 +154,8 @@ PreprocessEEG class processes EEG data through methods for reading, filtering, n
 
 ---
 
+### iir.py
+
+![image](https://github.com/user-attachments/assets/912498c6-0d1c-4688-b8e3-a9d285368a15)
+
+The FilterSignal class provides methods to apply bandpass, lowpass, and highpass Butterworth filters to signals, using specified sampling frequency and filter order. It processes input data arrays and returns filtered signals.
