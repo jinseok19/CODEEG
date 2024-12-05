@@ -305,8 +305,8 @@ def combine_images(top_folder, bottom_folder, output_folder):
                 combined_image.paste(bottom, (0, top.height))
                 
                 # Save with a descriptive name
-                # combined_name = f"{os.path.splitext(top_image)[0]}_{os.path.splitext(bottom_image)[0]}.jpg"
-                combined_name = f"combination_{cnt}.jpg"
+                combined_name = f"combination_{os.path.splitext(top_image)[0]}_{os.path.splitext(bottom_image)[0]}.jpg"
+                # combined_name = f"combination_{cnt}.jpg"
                 combined_image.save(os.path.join(output_folder, combined_name))
                 cnt += 1
     print(f"All combinations saved in {output_folder}.")

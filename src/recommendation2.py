@@ -5,7 +5,139 @@ from pathlib import Path
 import shutil
 from PIL import Image
 
-def clear_directory(directory: Path):
+
+from typing import List
+import numpy as np
+from PIL import Image
+from pathlib import Path
+import os
+
+def recommend_combination2(
+    avg_evoked_list: List[np.ndarray], 
+    times_list: List[np.ndarray], 
+    channels: List[str], 
+    image_folder: str, 
+    tops_folder: str, 
+    bottoms_folder: str, 
+    combination_folder: str, 
+    mode: str = "all"
+) -> List[str]:
+    
+    tops_folder = './static/images/result/tops'
+    bottoms_folder = './static/images/result/bottoms'
+    combination_folder = './images/chosen_combination'
+
+    result_dir = 'static/images/result/combination'
+    max_values_per_channel = []
+    
+    # 각 채널에 대해
+    for channel_idx in range(len(channels)):
+        max_values = []
+        # 각 이미지에 대해
+        for num_images in range(len(times_list)):
+            # 0.1초~0.5초 사이의 시간 인덱스 추출
+            selected_indices = [
+                index for index, value in enumerate(times_list[num_images]) if 0.1 <= value <= 0.5
+            ]
+            start_index = selected_indices[0]
+            end_index = selected_indices[-1]
+
+            # 최대값 추출하여 리스트에 추가
+            max_value = max(avg_evoked_list[num_images][channel_idx][start_index: end_index + 1])
+            max_values.append(max_value)
+        max_values_per_channel.append(max_values)
+
+    # 각 채널의 최대값 상위 3개 인덱스 추출
+    indices_of_largest_values_per_channel = []
+    for channel in range(len(max_values_per_channel)):
+        indices_of_largest_values = sorted(
+            range(len(max_values_per_channel[channel])),
+            key=lambda i: max_values_per_channel[channel][i],
+            reverse=True,
+        )[:3]
+        largest_values = [max_values_per_channel[channel][i] for i in indices_of_largest_values]
+        top_values_and_indices = [
+            (value, index) for value, index in zip(largest_values, indices_of_largest_values)
+        ]
+        indices_of_largest_values_per_channel.append(top_values_and_indices)
+
+    # 내림차순 정렬
+    top_values_and_indices = sum(indices_of_largest_values_per_channel, [])
+    sorted_top_values_and_indices = sorted(
+        top_values_and_indices, key=lambda i: i[0], reverse=True
+    )
+
+    # 중복되지 않는 상위 3개 인덱스 결정
+    seen_indices = set()
+    top_indices = []
+    for _, index in sorted_top_values_and_indices:
+        if index not in seen_indices:
+            top_indices.append(index)
+            seen_indices.add(index)
+        if len(top_indices) == 3:
+            break
+
+    save_dir = Path(result_dir)
+    save_dir.mkdir(parents=True, exist_ok=True)
+
+    # 폴더 비우기
+    for file in save_dir.iterdir():
+        if file.is_file():
+            file.unlink()
+
+    # 상의/하의 이름 추출 및 저장
+    top_recommendations = []
+    # 상의/하의 이름 추출 및 저장
+    top_recommendations = []
+    combination_files = sorted(Path(combination_folder).glob("combination_*.jpg"))
+
+    for rank, idx in enumerate(top_indices, 1):
+        combination_file = combination_files[idx]
+        
+        if not combination_file.exists():
+            print(f"Error: 조합 파일이 없습니다. {combination_file}")
+            continue
+
+        # 조합 이름에서 상의/하의 이름 추출
+        try:
+            parts = combination_file.stem.replace("combination_", "").split("_")
+            top_name = f"{parts[0]}.jpg"  # 상의 이름
+            bottom_name = f"{parts[1]}.jpg"  # 하의 이름
+        except IndexError:
+            print(f"조합 파일에서 상의/하의 이름 추출 실패: {combination_file}")
+            continue
+
+        # 순위별 폴더 생성
+        best_dir = save_dir / f"best_{rank}"
+        best_dir.mkdir(parents=True, exist_ok=True)
+
+        # 상의 파일 복사
+        top_src_path = os.path.join(tops_folder, top_name)
+        if os.path.exists(top_src_path):
+            top_dest_path = best_dir / top_name
+            Image.open(top_src_path).save(top_dest_path)
+        else:
+            print(f"상의 파일을 찾을 수 없습니다: {top_src_path}")
+
+        # 하의 파일 복사
+        bottom_src_path = os.path.join(bottoms_folder, bottom_name)
+        if os.path.exists(bottom_src_path):
+            bottom_dest_path = best_dir / bottom_name
+            Image.open(bottom_src_path).save(bottom_dest_path)
+        else:
+            print(f"하의 파일을 찾을 수 없습니다: {bottom_src_path}")
+
+        # 조합 이미지 저장
+        combination_dest_path = best_dir / combination_file.name
+        Image.open(combination_file).save(combination_dest_path)
+
+        print(f"순위 {rank}: 상의={top_name}, 하의={bottom_name}, 조합={combination_file.name} 저장 완료")
+        top_recommendations.append(str(combination_dest_path))
+
+    return top_recommendations
+
+
+'''def clear_directory(directory: Path):
     if directory.exists() and directory.is_dir():
         shutil.rmtree(directory)
     directory.mkdir(parents=True, exist_ok=True)
@@ -80,11 +212,12 @@ def recommend_combination2(
     combination_dir.mkdir(parents=True, exist_ok=True)
     print(f"결과 디렉토리 생성됨: {combination_dir}")
 
-    '''# 폴더 비우기
-    if mode == "all":
-        for file in combination_dir.iterdir():
-            if file.is_file():
-                file.unlink()  # 파일 삭제'''
+    
+    # 폴더 비우기
+    # for file in combination_dir.iterdir():
+    #    if file.is_file():
+    #        file.unlink()
+
 
     for idx in top_indices:
         image_filename = f"combination_{idx}.jpg"
@@ -94,7 +227,7 @@ def recommend_combination2(
         print(f"조합 이미지 저장 완료: {combination_path}")
         top_recommendations.append(combination_path)
     
-    return top_recommendations
+    return top_recommendations'''
 
 '''
 # 각 채널의 최대값 상위 3개 인덱스 추출
