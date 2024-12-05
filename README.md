@@ -46,11 +46,9 @@ CODEEG/
 ```
 ### Project Process
 
-![image](https://github.com/user-attachments/assets/4318ab7f-752c-42a7-8c48-ed443bc86f63)
+![image](https://github.com/user-attachments/assets/f6e7cf17-b79d-45d1-9811-93d1ff4a9daf)
 
-
-
-
+Wearing the MAVE EEG device, we test top and bottom images. Using P300 signals, we select the top and bottom images to create combination images. These results are then processed using the Replicate API with the IDM-VTON model to virtually dress the user image.
 
 ---
 
