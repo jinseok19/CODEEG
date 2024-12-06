@@ -12,7 +12,7 @@ To install the necessary packages, run:
 ```bash
 # clone project
 git clone https://github.com/jinseok19/CODEEG.git
-cd eeg
+cd codeeg
 
 # [OPTIONAL] create conda environment
 conda create -n myenv python=3.7
