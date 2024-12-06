@@ -16,18 +16,39 @@ document.querySelector(".dropdown-toggle").addEventListener("click", function ()
 });
 
 function generatePDF() {
-  // PDF로 변환할 요소
   const element = document.querySelector("main");
-
-  // PDF 설정
+  
   const opt = {
-    margin: 1,
+    margin: [0.5, 0.5, 0.5, 0.5],
     filename: "CODEEG_report.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
+    image: { type: "jpeg", quality: 0.95 },
+    html2canvas: { 
+      scale: 2,
+      useCORS: true,
+      letterRendering: true,
+      scrollY: 0,
+      windowWidth: document.documentElement.scrollWidth
+    },
+    jsPDF: { 
+      unit: "in",
+      format: [8.5, 18],
+      orientation: "portrait",
+      compress: true
+    },
+    pagebreak: { 
+      mode: ['css', 'legacy'],
+      before: '.page-break',
+      after: '.page-break',
+      avoid: '.avoid-page-break'
+    },
+    enableLinks: false
   };
 
-  // PDF 생성
+  // PDF의 세로 크기 조정
+  const contentHeight = element.scrollHeight / 90; // 96 DPI 기준으로 계산
+  opt.jsPDF.format = [11.7, contentHeight]; // 가로는 고정, 세로는 내용에 맞춤
+
+  // 직접 PDF 생성 및 저장
   html2pdf().set(opt).from(element).save();
 }
+
