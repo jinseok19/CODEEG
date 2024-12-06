@@ -124,6 +124,11 @@
         </div>
       </div>
     </main>
+    <div class="next-step-button-container">
+      <form action="{{ url_for('report') }}">
+        <button type="submit" class="large-button">Report 보러가기</button>
+      </form>
+    </div>
     <footer class="footer">
       <hr />
       <div class="footer__aside-bottom">
@@ -133,22 +138,22 @@
         <div class="footer__right" style="float: right">
           <div class="footer__payment-icons h-stack wrap gap-2">
             <img
-              src="{{ url_for('static', filename='images/visa_logo.jpg') }}"
+              src="{{ url_for('static', filename='images/pages/visa_logo.jpg') }}"
               alt="Visa"
               width="38"
               height="24" />
             <img
-              src="{{ url_for('static', filename='images/Google_Pay_Logo.jpg') }}"
+              src="{{ url_for('static', filename='images/pages/Google_Pay_Logo.jpg') }}"
               alt="Google Pay"
               width="38"
               height="24" />
             <img
-              src="{{ url_for('static', filename='images/amazon_pay_logo.jpg') }}"
+              src="{{ url_for('static', filename='images/pages/amazon_pay_logo.jpg') }}"
               alt="Amazon Pay"
               width="38"
               height="24" />
             <img
-              src="{{ url_for('static', filename='images/paypal_logo.jpg') }}"
+              src="{{ url_for('static', filename='images/pages/paypal_logo.jpg') }}"
               alt="PayPal"
               width="38"
               height="24" />

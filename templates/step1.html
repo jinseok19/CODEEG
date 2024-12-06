@@ -87,7 +87,7 @@
         <form action="{{ url_for('run_erp_combination_top') }}" method="post">
           <button type="submit" class="big-button">
             <img
-              src="{{ url_for('static', filename='images/T11.jpg') }}"
+              src="{{ url_for('static', filename='images/pages/T11.jpg') }}"
               alt="Top Test"
               class="button-icon" />
             TOP TEST
@@ -96,19 +96,19 @@
         <form action="{{ url_for('run_erp_combination_bottom') }}" method="post">
           <button type="submit" class="big-button">
             <img
-              src="{{ url_for('static', filename='images/B3.jpg') }}"
+              src="{{ url_for('static', filename='images/pages/B3.jpg') }}"
               alt="Bottom Test"
               class="button-icon" />
             BOTTOM TEST
           </button>
         </form>
-        <div class="next-step-button-container">
-          <form action="{{ url_for('step2') }}">
-            <button type="submit" class="large-button">Next Step</button>
-          </form>
-        </div>
       </div>
     </main>
+    <div class="next-step-button-container">
+      <form action="{{ url_for('step2') }}">
+        <button type="submit" class="large-button">Next Step</button>
+      </form>
+    </div>
 
     <footer class="footer">
       <hr />
@@ -119,22 +119,22 @@
         <div class="footer__right" style="float: right">
           <div class="footer__payment-icons h-stack wrap gap-2">
             <img
-              src="{{ url_for('static', filename='images/visa_logo.jpg') }}"
+              src="{{ url_for('static', filename='images/pages/visa_logo.jpg') }}"
               alt="Visa"
               width="38"
               height="24" />
             <img
-              src="{{ url_for('static', filename='images/Google_Pay_Logo.jpg') }}"
+              src="{{ url_for('static', filename='images/pages/Google_Pay_Logo.jpg') }}"
               alt="Google Pay"
               width="38"
               height="24" />
             <img
-              src="{{ url_for('static', filename='images/amazon_pay_logo.jpg') }}"
+              src="{{ url_for('static', filename='images/pages/amazon_pay_logo.jpg') }}"
               alt="Amazon Pay"
               width="38"
               height="24" />
             <img
-              src="{{ url_for('static', filename='images/paypal_logo.jpg') }}"
+              src="{{ url_for('static', filename='images/pages/paypal_logo.jpg') }}"
               alt="PayPal"
               width="38"
               height="24" />
