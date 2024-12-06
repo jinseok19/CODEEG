@@ -1,23 +1,33 @@
 # CODDEG
-#### Neuro Engineering
+#### Neuro Engineering Project
 
-## project start
+## A Service that EEG-based ERP analysis to recommend personalized fashion coordination and virtually apply the outfits to user images. 
+This BCI project leverages EEG measurements to analyze ERP signals, identifying user preferences. </br>
+Based on these insights, it recommends omnivore-inspired fashion coordination, combining tops and bottoms, and virtually applies the selected outfits to user images using advanced AI.
 
-#### Installation
+---
+#### Requirements
 
 To install the necessary packages, run:
 ```bash
-pip install flask
-pip install replicate
+# clone project
+git clone https://github.com/jinseok19/CODEEG.git
+cd eeg
+
+# [OPTIONAL] create conda environment
+conda create -n myenv python=3.7
+conda activate codeeg
+
+# install requirements
+pip install -r requirements.txt
 ```
 
-#### Run the Application
+#### Run
 
 To start the application, execute:
 ```bash
 python app.py
 ```
-This format uses Markdown to clearly separate sections and provides code blocks for easy copying.
 
 ---
 ### Project Structure
@@ -47,6 +57,7 @@ CODEEG/
 │   ├── css/                    # Stylesheets
 │   ├── data/                   # Data files for web
 │   ├── images/                 # Images for web
+│       └── result # recommended images results (top garments, bottom garments, combinations)
 │   ├── js/                     # JavaScript files
 │   └── uploads/                # User-uploaded files
 ├── templates/                   # HTML templates
@@ -65,7 +76,7 @@ CODEEG/
 ```
 
 ---
-### Project Process
+### Process
 
 ![image](https://github.com/user-attachments/assets/f6e7cf17-b79d-45d1-9811-93d1ff4a9daf)
 
@@ -88,7 +99,7 @@ Wearing the MAVE EEG device, we test top and bottom images. Using P300 signals, 
 ---
 
 ### IDM-VTON
-Non-Commercial use only!
+#### Non-Commercial use only!
 This is the current best-in-class virtual try-on model, created by the Korea Advanced Institute of Science & Technology (KAIST). It’s capable of virtual try-on “in the wild” which has notoriously been difficult for generative models to tackle, until now!
 
 IDM-VTON : Improving Diffusion Models for Authentic Virtual Try-on in the Wild
@@ -99,108 +110,137 @@ This is an official implementation of paper ‘Improving Diffusion Models for Au
 ![teaser2](https://github.com/user-attachments/assets/80695dc8-fc54-4e90-a4e5-ff3b2533563b)
 
 ---
-# abstract
-## 1. Software Module Descriptions
 
-### `app.py`
-This module serves as the main entry point for the Flask web application. It handles routing, rendering HTML templates, and managing user sessions. Key functionalities include:
-- Initializing the Flask app and setting up configurations.
-- Defining routes for different steps of the application (`/step1`, `/step2`, `/step3`).
-- Handling image uploads and executing the `dress_up.py` script.
-- Rendering reports and managing image processing tasks asynchronously.
+## **1. Core Features**
 
-### `src/task2.py`
-This module is responsible for managing the combination task for images. It includes:
-- Functions to combine and resize images.
-- A `combination_task2` function that uses Pygame to display images and record user responses.
-- Ensures directories for image storage are created and managed properly.
-
-### `src/recommendation2.py`
-This module provides functionality for recommending clothing combinations based on EEG data. It includes:
-- The `recommend_combination2` function, which processes EEG data to select top clothing combinations.
-- Methods to manage and store recommended images in a structured directory format.
-- Utilizes image processing to ensure the best combinations are selected and saved.
-
-### `erp_combination.py` and `erp_combination2.py`
-These modules (not fully detailed here) are likely responsible for processing EEG data to determine clothing preferences. They are used in conjunction with the main application to provide personalized recommendations.
-
-### `dress_up.py`
-This script is executed to apply virtual clothing to user images using the Replicate API. It processes top and bottom clothing images and saves the results in specified directories.
-
-### `static/uploads`
-This directory is used to store uploaded images temporarily during the processing phase.
-
-### `static/images/result`
-This directory structure is used to store the results of image processing tasks, including top, bottom, and combination images.
-
-### `templates`
-Contains HTML templates used by the Flask application to render web pages for different steps and reports.
+### **Web Application (`app.py`)**
+- **Purpose:** The main Flask web application for the project.
+- **Key Features:**
+  - Handles routing (`/step1`, `/step2`, `/step3`).
+  - Manages image uploads and user sessions.
+  - Facilitates virtual try-on functionality by invoking `dress_up.py`.
+  - Supports asynchronous task handling and result rendering.
 
 ---
 
-These modules work together to provide a seamless experience for users, from uploading images to receiving personalized clothing recommendations based on EEG data.
+### **Recommendation Workflow**
+#### **Top and Bottom Recommendation (`task.py`)**
+- **Objective:** Recommends the **Top 5** images for tops and bottoms based on EEG data.
+- **Workflow:**
+  1. **Image Preprocessing:** Resizes images for tops and bottoms.
+  2. **ERP Analysis:** Uses `erp_combination.py` to extract P300 peaks from EEG data.
+  3. **Recommendation:** Invokes `recommendation.py` to extract **Top 5** images based on P300 peaks.
+  4. **Storage:** Saves recommended images in a specified directory.
 
-
-## 2. Detail
-
-### dress_up.py
-
-![image](https://github.com/user-attachments/assets/68c09e79-6f46-4348-98e1-fa61cafd65b5)
-
-
-The script processes images by using a Replicate client to apply a virtual try-on model to top and bottom clothing images, saving the results in specified output folders. It iterates over predefined directory combinations, finding images by prefix and logging the process.
+#### **Top-Bottom Combination Recommendation (`task2.py`)**
+- **Objective:** Recommends the **Top 3** top-bottom combinations based on EEG data.
+- **Workflow:**
+  1. Uses `task.py` to extract **Top 5** images for both tops and bottoms.
+  2. **Combination Generation:** Creates 25 top-bottom combination images and resizes them.
+  3. **ERP Analysis:** Uses `erp_combination2.py` to analyze EEG data for combination images.
+  4. **Recommendation:** Invokes `recommendation2.py` to select the **Top 3** combinations based on P300 peaks.
+  5. **Storage:** Saves the selected combinations, including their corresponding top and bottom images, in a specified directory.
 
 ---
 
-### erp_combination.py
+### **EEG Data Processing**
+#### **ERP Analysis**
 
 ![image](https://github.com/user-attachments/assets/23737f6c-4b88-4a1f-86df-0cfade3bae7d)
 
+- `erp_combination.py` and `erp_combination2.py` analyze EEG data to detect P300 peaks, which indicate user preferences.
 
-This script processes EEG data to analyze and visualize ERP responses, recommending clothing combinations based on the analysis. It supports command-line arguments for flexible configuration and execution.
-
----
-### task.py
-
-![image](https://github.com/user-attachments/assets/e0d5c2f8-d150-4c6e-9363-539294df6979)
-
-This script initializes a Pygame environment to conduct a visual stimulus experiment, resizing images and logging response times to a CSV file. It supports customizable screen dimensions, inter-stimulus intervals, and trial configurations.
-
---- 
-### analysis.py
-
-![image](https://github.com/user-attachments/assets/922c8c16-e1da-45b7-89ca-3468996f30dc)
-
-
-This module provides EEG analysis tools, including ERP, ERDS, and SSVEP analysis, with preprocessing capabilities such as filtering, normalization, and time synchronization. It supports various scaling methods for frequency domain analysis results.
-
---- 
-### plot.py
-
-![image](https://github.com/user-attachments/assets/dceb1295-166b-4ccf-a396-6f60930f7599)
-
-This code provides functionality to visualize and save EEG data, plotting various EEG channels and average FFT values for selected frequencies. The PlotEEG class generates plots for EEG data, while the plot_ssvep function visualizes average FFT values per frequency from a given DataFrame.
-
---- 
-
-### recommendation.py
+#### **Recommendation**
 
 ![image](https://github.com/user-attachments/assets/2a6b7eb1-745b-43d5-8753-a26095230533)
 
-The recommend_combination function analyzes EEG data to recommend clothing combinations by identifying the top evoked responses within a specified time window and saves the corresponding images. It supports both "tops" and "bottoms" clothing types, ensuring the recommended images are stored in a designated directory.
-
---- 
-
-### preprocess.py
-
-![image](https://github.com/user-attachments/assets/44edb9f4-2690-4a2b-b4a4-c53bba2dcbe7)
-
-PreprocessEEG class processes EEG data through methods for reading, filtering, normalizing, and extracting epochs, while resize_images_in_folder and combine_images functions handle image resizing and combination tasks.
+- `recommendation.py`: Recommends **Top 5** images for tops and bottoms.
+- `recommendation2.py`: Recommends **Top 3** top-bottom combinations.
 
 ---
 
-### iir.py
+### **Image Processing**
+#### **Image Resize & Combination**
+
+![image](https://github.com/user-attachments/assets/e0d5c2f8-d150-4c6e-9363-539294df6979)
+
+- `task.py`: Resizes top and bottom images.
+- `task2.py`: Creates and resizes top-bottom combination images.
+
+#### **Virtual Try-On**
+
+![image](https://github.com/user-attachments/assets/68c09e79-6f46-4348-98e1-fa61cafd65b5)
+
+- `dress_up.py`:
+  - Generates virtual try-on images for tops and bottoms using the Replicate API.
+  - Saves the results in specified directories.
+
+---
+
+## **2. Supporting Utilities**
+
+### **Preprocessing (`preprocess.py`)**
+
+![image](https://github.com/user-attachments/assets/44edb9f4-2690-4a2b-b4a4-c53bba2dcbe7)
+
+- Processes EEG data:
+  - Includes filtering, normalization, and epoch extraction.
+- Handles image preprocessing:
+  - Resizes and combines images within specified directories.
+
+### **Signal Filtering (`iir.py`)**
 
 ![image](https://github.com/user-attachments/assets/912498c6-0d1c-4688-b8e3-a9d285368a15)
 
-The FilterSignal class provides methods to apply bandpass, lowpass, and highpass Butterworth filters to signals, using specified sampling frequency and filter order. It processes input data arrays and returns filtered signals.
+- Applies Butterworth filters (bandpass, lowpass, highpass) to EEG signals for noise reduction.
+
+
+### **Data Analysis (`analysis.py`)**
+
+![image](https://github.com/user-attachments/assets/922c8c16-e1da-45b7-89ca-3468996f30dc)
+
+- Provides tools for ERP analysis.
+- Supports data preprocessing and synchronization.
+
+### **Visualization (`plot.py`)**
+
+![image](https://github.com/user-attachments/assets/dceb1295-166b-4ccf-a396-6f60930f7599)
+
+- Visualizes EEG data and frequency analysis results.
+- Key Functions:
+  - `PlotEEG`: Visualizes EEG channel data.
+
+---
+
+## **3. Directory Structure**
+
+- **`static/uploads`**: Temporarily stores uploaded images.
+- **`static/images/result`**: Stores processed results (tops, bottoms, combinations).
+- **`templates`**: Contains HTML templates for the Flask web application.
+
+---
+
+## **4. Key Modules**
+
+### **Task Modules**
+- `task.py`: Selects the top 5 recommended images for tops and bottoms.
+- `task2.py`: Selects the top 3 recommended top-bottom combinations.
+
+### **ERP-Based Recommendation**
+- `erp_combination.py`: Analyzes user preferences for tops and bottoms.
+- `erp_combination2.py`: Analyzes user preferences for top-bottom combinations.
+
+### **Virtual Try-On**
+- `dress_up.py`: Generates virtual try-on images.
+
+---
+
+## **5. Workflow Summary**
+
+1. The user uploads their image.
+2. EEG data and images are used to recommend tops and bottoms (`task.py`).
+3. Top-bottom combination images are generated and final recommendations are made (`task2.py`).
+4. Virtual try-on images are generated (`dress_up.py`).
+5. Results are displayed via the web application.
+
+---
