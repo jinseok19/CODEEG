@@ -69,8 +69,8 @@ def erp_combination(
     if mode=="task":
         return event_file, data_file_path
 
-    data_file_path = 'data\\2024-11-04\Rawdata_16.57.47.csv'
-    event_file = 'event\\2024-11-04\combination_event_16.57.54.971043.csv'
+    # data_file_path = 'data\\2024-11-04\Rawdata_16.57.47.csv'
+    # event_file = 'event\\2024-11-04\combination_event_16.57.54.971043.csv'
 
     analyze_eeg = AnalyzeEEG(channels=channels, fs=fs)
     eeg, eeg_times, avg_evoked_list, times_list = analyze_eeg.analyze_erp(
